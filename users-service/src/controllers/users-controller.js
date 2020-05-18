@@ -50,7 +50,7 @@ const createUser = async(req, res) =>{
                     return;
             }
             
-            res.status(505).send({status: 'ERROR', message: 'usuario creado' });
+            res.status(505).send({status: 'ERROR', message: 'usuario no creado' });
     
         }
     
