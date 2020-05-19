@@ -2,23 +2,12 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var fs = require('fs');
-var multer = require('multer');
-
-var optionsMulter = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, path.join(__dirname, 'songs'));
-    },
-    filename: function(req, file, cb){
-        cb(null, file.originalname);
-    }
-});
-
-var upload = multer({storage: optionsMulter});
 
 
 const uploadsong = async(req, res) =>{
+    console.log('pasaporaqui');
     var nombre = req.file.originalname;
-    var archivoCanciones = path.join(__dirname, 'songs.json');
+    var archivoCanciones = path.join(songDir, 'songs.json');
     fs.readFile(archivoCanciones, 'utf8', function(err, archivo) {
         if (err) throw err;
         var songs = JSON.parse(archivo);
