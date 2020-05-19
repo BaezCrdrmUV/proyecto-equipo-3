@@ -5,7 +5,6 @@ var fs = require('fs');
 
 
 const uploadsong = async(req, res) =>{
-    console.log('pasaporaqui');
     var nombre = req.file.originalname;
     var archivoCanciones = path.join(songDir, 'songs.json');
     fs.readFile(archivoCanciones, 'utf8', function(err, archivo) {
