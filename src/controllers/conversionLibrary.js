@@ -1,18 +1,8 @@
-var express = require('express');
-var app = express();
 var path = require('path');
 const ffmpeg = require('fluent-ffmpeg')
 var fs = require('fs');
 
 
-const uploadsong = async(req, res) =>{
-   console.log('Cancion recibida: ' + req.file.originalname);
-   res.json({message: 'Cancion recibida: ' + req.file.originalname});
-   resizeDiferentAudio(req.file.originalname);
-};
-
-
-module.exports = {uploadsong};
 
 function resizeDiferentAudio(song){
     
