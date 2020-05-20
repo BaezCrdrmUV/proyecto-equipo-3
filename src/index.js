@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const routes = require('./routes/upload-routes');
-global.songDir = path.resolve('/home/davisbd/Escritorio/proyecto-equipo-3/songs');
+global.songDir = path.resolve('/home/davisbd/Escritorio/Songs');
 
 
 app.use(express.json());
