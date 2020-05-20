@@ -6,8 +6,7 @@ var fs = require('fs');
 
 function resizeDiferentAudio(song){
     
-    var songOnlyName = path.basename(song, '.mp3');
-    songOnlyName = songOnlyName.replace(/\s+/g, '');
+    var songOnlyName = eliminateEmptySpaces(song);
     makeDirectory(songDir + '/' + songOnlyName);
     resizeAudio(songOnlyName, 128);
     resizeAudio(songOnlyName, 160);
@@ -24,6 +23,12 @@ function makeDirectory(directory){
     }
 }
 
+function eliminateEmptySpaces(songName){
+    songName = path.basename(songName, '.mp3');
+    songName = songName.replace(/\s+/g, '');
+    return songName;
+}
+
 function resizeAudio(song, bitrate) {
     const name = song;
     makeDirectory(`${songDir}/${name}/${bitrate}`);
@@ -35,7 +40,7 @@ function resizeAudio(song, bitrate) {
         '-segment_time 10',
         '-segment_format mpegts',
         '-hls_playlist_type vod',
-        '-hls_segment_filename ' + `${songDir}/${name}/${bitrate}/%03d.ts`,
+        '-hls_segment_filename ' + `${songDir}/${name}/${bitrate}/${bitrate}%03d.ts`,
         '-segment_list ' + `${songDir}/${name}/${bitrate}/${bitrate}.m3u8`
     ])
     .output(`${songDir}/${name}/${bitrate}/${bitrate}.m3u8`)
@@ -47,3 +52,6 @@ function resizeAudio(song, bitrate) {
     })
     .run() 
 }
+
+
+module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces}
