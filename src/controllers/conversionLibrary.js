@@ -1,6 +1,7 @@
 var path = require('path');
 const ffmpeg = require('fluent-ffmpeg')
 var fs = require('fs');
+const Songs = require('../mongo/models/song.js')
 
 
 
@@ -53,5 +54,21 @@ function resizeAudio(song, bitrate) {
     .run() 
 }
 
+const createSong = async(req, songName) =>{
+ 
+    const {title, number, album , artist, genre, year} = req.body;
+    const filename = songName;
+    await Songs.create({
+        title,
+        number,
+        album,
+        artist, 
+        genre,
+        year,
+        filename
+    })
+}
 
-module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces}
+
+
+module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces, createSong}
