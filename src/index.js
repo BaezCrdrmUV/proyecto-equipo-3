@@ -10,8 +10,18 @@ app.use(routes);
 
 const PORT = 3000;
 
+var mongoose = require("mongoose");
+mongoose
+.connect("mongodb://localhost:27017/songs", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+    console.log("conexión creada");
+    app.listen(PORT, function(){
+      console.log("server running");
+  });
 
-console.log("conexión creada");
-app.listen(PORT, function(){
-  console.log("server running");
+}).catch(Error => {
+    console.log("mongo error", Error);
 });

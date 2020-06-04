@@ -66,7 +66,8 @@ const createSong = async(req, songName) =>{
         genre,
         year,
         filename
-    })
+    });
+    console.log(Songs);
 }
 
 
