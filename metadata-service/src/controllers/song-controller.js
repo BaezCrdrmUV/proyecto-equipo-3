@@ -23,7 +23,20 @@ const createSong = async(req, res) =>{
     }
 }
 
+const getSong = async (req, res) =>{
+    try {
+        const {songId} = req.body; 
+        const song = await Songs.findById(songId);
+
+        res.send ({status: 'ok', data: song});
+
+    } catch (error) {  
+        res.status(505).send({status: 'ERROR', message: 'no se pudo' });
+    }
+
+}
 
 
 
-module.exports = {createSong};
+
+module.exports = {createSong, getSong};
