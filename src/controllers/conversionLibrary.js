@@ -6,7 +6,6 @@ const Songs = require('../mongo/models/song.js')
 
 
 function resizeDiferentAudio(song){
-    
     var songOnlyName = eliminateEmptySpaces(song);
     makeDirectory(songDir + '/' + songOnlyName);
     resizeAudio(songOnlyName, 128);
@@ -58,6 +57,7 @@ const createSong = async(req, songName) =>{
  
     const {title, number, album , artist, genre, year} = req.body;
     const filename = songName;
+    const status = 'Waiting'
     await Songs.create({
         title,
         number,
@@ -65,9 +65,9 @@ const createSong = async(req, songName) =>{
         artist, 
         genre,
         year,
-        filename
+        filename,
+        status
     });
-    console.log(Songs);
 }
 
 
