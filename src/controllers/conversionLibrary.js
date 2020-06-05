@@ -5,13 +5,16 @@ const Songs = require('../mongo/models/song.js')
 
 
 
-function resizeDiferentAudio(song){
+const resizeDiferentAudio = async(song) =>{
     var songOnlyName = eliminateEmptySpaces(song);
     makeDirectory(songDir + '/' + songOnlyName);
     resizeAudio(songOnlyName, 128);
     resizeAudio(songOnlyName, 160);
     resizeAudio(songOnlyName, 192);
     resizeAudio(songOnlyName, 320);
+    return new Promise(function(resolve, reject) {
+        resolve(1)
+    })
 }
 
 function makeDirectory(directory){
