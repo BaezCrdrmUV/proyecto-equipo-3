@@ -1,0 +1,19 @@
+{
+  "name": "streaming-service",
+  "version": "1.0.0",
+  "description": "Service in chargue of streaming of songs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaezCrdrmUV/proyecto-equipo-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaezCrdrmUV/proyecto-equipo-3/issues"
+  },
+  "homepage": "https://github.com/BaezCrdrmUV/proyecto-equipo-3#readme"
+}
