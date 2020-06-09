@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 global.songDir = path.resolve('../songs');
-const routes = require('routes/streaming-routes.js')
+const routes = require('./routes/streaming-routes.js')
 
 app.use(express.json());
 app.use(routes);

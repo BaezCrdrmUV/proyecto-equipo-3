@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BaezCrdrmUV/proyecto-equipo-3#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.9.18",
     "nodemon": "^2.0.4"
   }
 }
