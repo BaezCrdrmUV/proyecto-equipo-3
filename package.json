@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.9.18",
+    "node-media-server": "^2.1.9",
     "nodemon": "^2.0.4"
   }
 }
