@@ -8,6 +8,21 @@ const Songs = require('../mongo/models/song.js')
 const resizeDiferentAudio = async(song) =>{
     var songOnlyName = eliminateEmptySpaces(song);
     makeDirectory(songDir + '/' + songOnlyName);
+    console.log(path.join(songDir, songOnlyName + '.m3u8'));
+    fs.writeFile(path.join(songDir, songOnlyName,  songOnlyName + '.m3u8'),'#EXTM3U \n' +
+    '#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",AUTOSELECT=YES, NAME=' + songOnlyName + '\n' +
+    '#EXT-X-STREAM-INF:BANDWIDTH=700000 \n' +
+    '128/128.m3u8 \n' +
+    '#EXT-X-STREAM-INF: BANDWIDTH=1000000\n' +
+    '160/160.m3u8 \n' +
+    '#EXT-X-STREAM-INF: BANDWIDTH=1200000\n' +
+    '192/192.m3u8 \n' +
+    '#EXT-X-STREAM-INF:BANDWIDTH=1500000 \n' +
+    '320/320.m3u8 \n', function(err){
+        if (err){
+            console.log('File not created');
+        }
+    });
     resizeAudio(songOnlyName, 128);
     resizeAudio(songOnlyName, 160);
     resizeAudio(songOnlyName, 192);
@@ -72,7 +87,6 @@ const createSong = async(req, songName) =>{
         status
     });
 }
-
 
 
 module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces, createSong}

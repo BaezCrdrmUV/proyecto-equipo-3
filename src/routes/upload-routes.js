@@ -10,6 +10,7 @@ var optionsMulter = multer.diskStorage({
         var fileWithoutSpaceName = conversion.eliminateEmptySpaces(file.originalname)
         conversion.makeDirectory(`${songDir}/${fileWithoutSpaceName}`)
         conversion.makeDirectory(`${songDir}/${fileWithoutSpaceName}/originalSong`);
+        console.log(`${songDir}/${fileWithoutSpaceName}/originalSong`);
         cb(null, `${songDir}/${fileWithoutSpaceName}/originalSong`);
     },
     filename: function(req, file, cb){
