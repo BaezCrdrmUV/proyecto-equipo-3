@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-global.songDir = path.resolve('../songs');
+global.songDir = path.resolve('./songs');
 
 const PORT = 3000;
 
