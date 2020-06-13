@@ -1,0 +1,24 @@
+{
+  "name": "download-service",
+  "version": "1.0.0",
+  "description": "Service in chargue of manage and serve of incoming downloads",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaezCrdrmUV/proyecto-equipo-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaezCrdrmUV/proyecto-equipo-3/issues"
+  },
+  "homepage": "https://github.com/BaezCrdrmUV/proyecto-equipo-3#readme"
+}
