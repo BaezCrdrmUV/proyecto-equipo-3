@@ -18,20 +18,14 @@
   .side-menu-item {
     list-style-type: none;
     line-height: 28px;
-    font-size: 14px;
+    font-size: 18px;
     width: 140px;
     cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
   }
-  
-  .side-menu-item:hover {
-    color: #fff;
-  }
-  
-  .radio {
-    margin-bottom: 20px;
-  }
+
+ 
   
   .side-menu-container .active {
       margin-left: -3px;

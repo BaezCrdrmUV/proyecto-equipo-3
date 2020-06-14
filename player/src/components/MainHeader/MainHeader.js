@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './MainHeader.css'
 
 export default class MainHeader extends Component {
     render() {

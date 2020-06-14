@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Playlist from '../playlists/playlist';
 import ImageArt from '../ImageArt/ImageArt';
-
+import './SideMenu.css'
 
 export default class SideMenu extends Component {
 
@@ -16,9 +16,10 @@ export default class SideMenu extends Component {
                     <h1>Ougi Music</h1>
                     <ul className="side-menu-container">
                         <li className={"side-menu-item"}>
-                            Browse
+                            Home
                         </li>
-                        <li className="side-menu-item">Radio</li>
+                        <li className="side-menu-item">Genres</li>
+                        <br></br>
                         <h3 className="user-library-header">Your Library</h3>
 
                     </ul>
