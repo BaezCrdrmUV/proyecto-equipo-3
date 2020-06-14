@@ -55,16 +55,16 @@ body {
   top: 10px;
   left: 10px;
   bottom: 10px;
-  width: 180px;
+  width: 280px;
   overflow-y: auto;
   
 
 }
 
 .main-section {
-  width: 900px;
+  width: 800px;
   position: relative;
-  left: 200px;
+  left: 400px;
   padding: 0 10px;
 
 }
