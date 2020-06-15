@@ -7,37 +7,9 @@ h3 {
   padding: 0;
 }
 
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out
-}
-
-@keyframes octocat-wave {
-  0%,
-  100% {
-    transform: rotate(0)
-  }
-  20%,
-  60% {
-    transform: rotate(-25deg)
-  }
-  40%,
-  80% {
-    transform: rotate(10deg)
-  }
-}
-
-@media (max-width:500px) {
-  .github-corner:hover .octo-arm {
-    animation: none
-  }
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out
-  }
-}
 
 body {
     font-family: 'Proxima Nova', Georgia, sans-serif;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 0;
     background: rgb(24, 24, 24);
@@ -57,22 +29,24 @@ body {
   bottom: 10px;
   width: 280px;
   overflow-y: auto;
-  
+
 
 }
 
 .main-section {
   width: 800px;
   position: relative;
-  left: 400px;
-  padding: 0 10px;
+  left: 00px;
+  margin: 0 300px;
 
 }
 
 .main-section-container {
   position: relative;
-  top: 50px;
+  top: 100px;
   padding-bottom: 100px;
+  margin: 0 70px;
+
 }
 
 .footer {
@@ -85,3 +59,4 @@ body {
   z-index: 2;
   background-color: rgb(40, 40, 40);
 }
+

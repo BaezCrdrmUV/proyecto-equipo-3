@@ -7,6 +7,11 @@ export default class playlist extends Component {
                 <h2>Playlists</h2>
             <div className='playlist'>
                 <p>xs</p>
+                <p>xs</p>
+                <p>xs</p>
+
+
+
             </div>
             </div>
 

@@ -6,8 +6,6 @@ export default class MainHeader extends Component {
         return (
             <div className='section-header'>
                 <h1>señores</h1>
-
-
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
 
@@ -24,6 +22,13 @@ export default class MainHeader extends Component {
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
@@ -36,55 +41,32 @@ export default class MainHeader extends Component {
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>
+                <h1>xddxdd</h1>                <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
                 <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
-                <h1>xddxdd</h1>
+      
 
             </div>
         )

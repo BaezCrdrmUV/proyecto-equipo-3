@@ -13,13 +13,15 @@ function App() {
       <div className='app-container'>
 
         <div className='left-side-section'>
-          <SideMenu></SideMenu>
-          
-        </div>        
-        <div className='main-section'>
+          <SideMenu></SideMenu>    
+        </div >        
+
+        <div className="main-section">
           <Header></Header>
-          <div className='main-section-container'>
+          <div className='main-section-container' >
             <MainHeader></MainHeader>
+
+
           </div>
         </div>
       </div>
