@@ -1,0 +1,124 @@
+.section-title {
+    font-size: 34px;
+    font-weight: 800;
+    padding: 0 0 20px 0;
+    font-family: 'Proxima Bold', Georgia, sans-serif;
+  }
+  
+  
+  .user-song-item {
+    list-style-type: none;
+    border-bottom: 1px solid #666;
+    display: flex;
+    line-height: 40px;
+    font-size: 14px;
+    width: 1100px;
+
+  }
+
+  
+  
+  .user-song-item:hover {
+    background: rgb(51, 51, 51);
+  }
+  
+.play-button{
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent #ffffff;
+    top:0;
+    left:0;
+    right:5px;
+    bottom:0;
+    margin: 11px;
+    cursor: pointer;
+
+}
+
+
+
+
+ 
+  .song-title,
+  .song-title-header {
+    width: 300px;
+    
+  }
+  
+  .song-album,
+  .song-album-header {
+
+    width: 250px;
+  }
+  
+  .song-artist,
+  .song-artist-header {
+    margin-left: 75px;
+    width: 200px;
+    
+  }
+  
+  .song-length,
+  .song-length-header  {
+    margin-left: 20px;
+
+    width: 200px;
+  }
+ 
+  
+  .song-title-header {
+    margin-left: 70px;
+  }
+  
+  .song-artist-header {
+    margin-left: 90px;
+
+  }
+  .song-album-header {
+    margin-left: 10px;
+
+  }
+
+  .song-length-header {
+    margin-left: 10px;
+  }
+  
+  .song-title p,
+  .song-artist p,
+  .song-album p,
+  .song-length p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 28px;
+    line-height: 42px;
+  }
+  
+  
+  .song-title-header p,
+  .song-artist-header p,
+  .song-album-header p,
+  .song-length-header p {
+    font-family: 'Proxima Thin', Georgia, sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #ccc;
+    padding: 0 8px;
+  }
+  
+
+
+  
+  .song-header-container {
+    display: flex;
+    border-bottom: 1px solid #666;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    width: 1100px;
+  }
+  
+

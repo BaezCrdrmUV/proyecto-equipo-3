@@ -8,8 +8,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true,
   });
-  mainWindow = new BrowserWindow({ width: 800, height: 600 });
+  mainWindow = new BrowserWindow({ width: 1280, height: 720 });
   mainWindow.loadURL(startUrl);
+  mainWindow.maximize();
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
