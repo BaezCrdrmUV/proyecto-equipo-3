@@ -20,7 +20,7 @@ export default class TrackList extends Component {
                 {
                     this.state.songs.map(song => {
                         return <div className="user-song-item" key={song.id}>
-                            <button className="play-button" onClick={() => console.log('uwu')}>
+                            <button className="play-button" onClick={() => console.log(song.id)}>
 
                             </button>                           
                             <div className="song-title">

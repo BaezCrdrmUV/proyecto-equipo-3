@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 import Footer from './components/Footer/footer';
 import Header from './components/Header/Header';
 import MainHeader from './components/MainHeader/MainHeader';
 import SideMenu from './components/SideMenu/SideMenu';
+import store from './redux/store'
+
 
 function App() {
+
+  console.log(store.getState());
   return (
     <div className="App">
 
