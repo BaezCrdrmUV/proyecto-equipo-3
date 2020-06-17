@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import './TrackList.css';
+import {connect} from 'react-redux';
+import {getSelectedPlaylist} from'../../redux/actions/playlists';
 
 
 import listSongsExample from '../../example/song.json'
 
-export default class TrackList extends Component {
+ class TrackList extends Component {
+
 
     state = {
         songs: []
     }
+    
     async componentDidMount() {
+        this.props.getSelectedPlaylist(this.props.elementToRender.id);
+        console.log(this.props);
         const data = listSongsExample;
         this.setState({ songs: data })
     }
 
+
+
     renderSongs() {
+        console.log(this.props);
         return (
             <div>
                 {
@@ -74,3 +83,19 @@ export default class TrackList extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        elementToRender : state.elementToRender,
+        playlists : state.playlists
+        
+    };
+};
+const mapDispatchToProps = { 
+    
+    getSelectedPlaylist
+
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (TrackList);

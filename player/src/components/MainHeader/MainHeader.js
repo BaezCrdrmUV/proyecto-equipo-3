@@ -16,9 +16,10 @@ ToRender(){
                 </div>
             );
         }
+        default:
+            return null;
     }
     
-    console.log(this.props);
 }
     
 

@@ -1,8 +1,16 @@
 const getPlaylists = (id) => {
     return {
-        type,
+        type: 'getPlaylists',
         id
     };
 };
 
-export default getPlaylists;
+const getSelectedPlaylist = (id) =>{
+    return {
+        type: 'getSelectedPlaylist',
+        payload :id
+    }
+}
+
+
+export { getPlaylists, getSelectedPlaylist};

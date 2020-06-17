@@ -1,6 +1,3 @@
-
-
-
 const renderPlaylists = (id) => {
     return {
         type: 'renderPlaylists',

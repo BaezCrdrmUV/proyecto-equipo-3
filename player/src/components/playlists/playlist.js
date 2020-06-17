@@ -21,9 +21,10 @@ class playlist extends Component {
     GetRenderPlayLists () {
 
 
-        const {playlists} = this.props;
-        return (
-            
+
+        const playlists = this.props.userplaylists.playlists;
+        
+        return (     
             <div>
                 {
                     playlists.map(playlist => {
@@ -48,7 +49,6 @@ class playlist extends Component {
 
 
     render() {
-        console.log(this.props);
 
         return (
             <div className="playlist" >
@@ -68,13 +68,14 @@ class playlist extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        playlists : state.playlists,
+        userplaylists : state.playlists
         
     };
 };
 
 const mapDispatchToProps = { 
     renderPlaylists
+    
 }
 
 
