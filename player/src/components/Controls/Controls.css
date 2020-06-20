@@ -1,0 +1,13 @@
+.play-button{
+        position: relative;
+
+}
+
+
+.container{
+    position: absolute;
+    height: 120px;
+    bottom: -56px;
+    right: 900px;
+    padding-left: 900px;
+}

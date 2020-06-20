@@ -27,11 +27,24 @@
     },
     
     {
-        "id": 3,
+        "id": 2,
         "title" : "Ameaaaaaaa",
         "number" : "3",
         "album" : "ok comaaaauter",
         "artist" : "Los tigres e",
+        "genre": "Rock",
+        "year": "1999",
+        "urlStreaming": "adasdsadsada",
+        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
+        "duration": "4:22"
+
+    },
+    {
+        "id": 3,
+        "title" : "America",
+        "number" : "3",
+        "album" : "ok computer",
+        "artist" : "Los tigres del norte",
         "genre": "Rock",
         "year": "1999",
         "urlStreaming": "adasdsadsada",
@@ -223,19 +236,6 @@
     },
     {
         "id": 18,
-        "title" : "America",
-        "number" : "3",
-        "album" : "ok computer",
-        "artist" : "Los tigres del norte",
-        "genre": "Rock",
-        "year": "1999",
-        "urlStreaming": "adasdsadsada",
-        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
-        "duration": "4:22"
-
-    },
-    {
-        "id": 19,
         "title" : "America",
         "number" : "3",
         "album" : "ok computer",

@@ -2,32 +2,46 @@ import React, { Component } from 'react';
 import './TrackList.css';
 import {connect} from 'react-redux';
 import {getSelectedPlaylist} from'../../redux/actions/playlists';
-
-
-import listSongsExample from '../../example/song.json'
+import {getSongs} from '../../redux/actions/songs';
 
  class TrackList extends Component {
 
 
-    state = {
-        songs: []
-    }
+    // state = {
+    //     songs: []
+    // }
     
-    async componentDidMount() {
+    // async componentDidMount() {
+    //     this.props.getSelectedPlaylist(this.props.elementToRender.id);
+    //     console.log(this.props);
+    //     const data = listSongsExample;
+    //     this.setState({ songs: data })
+    // }
+
+
+
+
+    componentDidMount(){
         this.props.getSelectedPlaylist(this.props.elementToRender.id);
+        const selectedPlaylist = this.props.playlists.selectedPlaylist;
+        const songsInPlaylist = selectedPlaylist.songs; 
+        this.props.getSongs(songsInPlaylist);
         console.log(this.props);
-        const data = listSongsExample;
-        this.setState({ songs: data })
+
+
     }
+
+
 
 
 
     renderSongs() {
-        console.log(this.props);
+ 
+
         return (
             <div>
                 {
-                    this.state.songs.map(song => {
+                    this.props.songs.listSongs.map(song => {
                         return <div className="user-song-item" key={song.id}>
                             <button className="play-button" onClick={() => console.log(song.id)}>
 
@@ -88,14 +102,19 @@ import listSongsExample from '../../example/song.json'
 const mapStateToProps = (state) => {
     return {
         elementToRender : state.elementToRender,
-        playlists : state.playlists
+        playlists : state.playlists,
+        songs : state.songs
+        
         
     };
 };
 const mapDispatchToProps = { 
     
-    getSelectedPlaylist
+    getSelectedPlaylist,
+    getSongs
 
 }
+
+
 
 export default connect (mapStateToProps, mapDispatchToProps) (TrackList);
