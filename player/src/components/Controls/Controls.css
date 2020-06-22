@@ -8,6 +8,15 @@
     position: absolute;
     height: 120px;
     bottom: -56px;
-    right: 900px;
-    padding-left: 900px;
+    right: 650px;
+    padding-left: 1900px;
 }
+
+.player{
+    width: 600px;
+    height: 65px;
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+
+}
+
+

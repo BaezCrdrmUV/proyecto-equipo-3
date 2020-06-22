@@ -1,6 +1,13 @@
 
 const defaultState = {
-    listSongs :[]
+    listSongs :[],
+    currentSong:{
+        id : "",
+        name: "",
+        album: "",
+        urlImage: "https://i.imgur.com/rEDaelS.png",
+        urlStreaming:""
+    }
 
 }
 
@@ -13,6 +20,14 @@ function reducer(state = defaultState, { type, payload }) {
             return {
                 ...state,
                 listSongs : state.listSongs = payload
+            }
+        }
+
+        case 'currentSong':{
+
+            return {
+                ...state,
+                currentSong : state.currentSong = payload
             }
         }
 

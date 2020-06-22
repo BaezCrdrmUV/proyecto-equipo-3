@@ -8,16 +8,25 @@ const getSongs = (songs) => {
     };
 };
 
+const currentSong = (song) => {
+    return{
+        type: "currentSong",
+        payload: song
+    }
+
+}
+
+
+
 
 function getSong(songs){
 
     const listSongsResult = listSongsExample
 
-    console.log(listSongsExample[songs[1]]);
 
 
 
     return listSongsResult;
 }
 
-export {getSongs};
+export {getSongs, currentSong };

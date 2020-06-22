@@ -3,6 +3,8 @@ import './TrackList.css';
 import {connect} from 'react-redux';
 import {getSelectedPlaylist} from'../../redux/actions/playlists';
 import {getSongs} from '../../redux/actions/songs';
+import {currentSong} from '../../redux/actions/songs';
+
 
  class TrackList extends Component {
 
@@ -26,14 +28,15 @@ import {getSongs} from '../../redux/actions/songs';
         const selectedPlaylist = this.props.playlists.selectedPlaylist;
         const songsInPlaylist = selectedPlaylist.songs; 
         this.props.getSongs(songsInPlaylist);
-        console.log(this.props);
-
-
     }
 
 
+    playSong(song){
+ 
+        this.props.currentSong(song);
+        console.log(this.props.songs.currentSong.urlStreaming);
 
-
+    }
 
     renderSongs() {
  
@@ -43,7 +46,7 @@ import {getSongs} from '../../redux/actions/songs';
                 {
                     this.props.songs.listSongs.map(song => {
                         return <div className="user-song-item" key={song.id}>
-                            <button className="play-button" onClick={() => console.log(song.id)}>
+                            <button className="play-button" onClick={() => this.playSong(song)}>
 
                             </button>                           
                             <div className="song-title">
@@ -108,10 +111,15 @@ const mapStateToProps = (state) => {
         
     };
 };
+
+
+
 const mapDispatchToProps = { 
     
     getSelectedPlaylist,
-    getSongs
+    getSongs,
+    currentSong
+    
 
 }
 

@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
 import './ImageArt.css'
+import {connect} from 'react-redux';
 
-export default class ImageArt extends Component {
+
+ class ImageArt extends Component {
 
 
-      
-    // async componentDidMount(){
-    //     const img = await fetch('https://i.imgur.com/s6ru3Ce.jpg');
-    // }
-//'../../example/images/art.jpg'
+
+
+
+     loadImage() {
+
+         const imageURL = this.props.songs.currentSong.urlImage;
+
+         console.log(this.props.songs.currentSong.urlImage)
+         return imageURL;
+
+     }
+
+     noImage(){
+        const imageURL = './noimage.jpg';
+        return imageURL;
+     }
+
+
 
     render() {
         return (
             <div >
-            <img className='imageblock' src='https://i.imgur.com/s6ru3Ce.jpg'  alt="album's art"></img>
-
+            <img className='imageblock' src={this.loadImage()}  alt="album's art"  ></img>
             </div>
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        songs : state.songs
+    };
+};
+
+
+
+export default connect (mapStateToProps) (ImageArt);
+

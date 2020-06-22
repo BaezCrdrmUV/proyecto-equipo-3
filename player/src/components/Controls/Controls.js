@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import Hls from 'hls.js';
 import './Controls.css';
+import {connect} from 'react-redux';
 
-export default class Controls extends Component {
+
+ class Controls extends Component {
     constructor(props) {
         super(props);
 
         this._onTouchInsidePlayer = this._onTouchInsidePlayer.bind(this)
 
     }
-    componentDidMount() {
+
+    play() {
 
 
         if (Hls.isSupported() && this.player) {
-            const streamURL = `http://localhost:4000/static/Heretics/Heretics.m3u8`;
+            const streamURL = this.props.songs.currentSong.urlStreaming;
+            console.log(streamURL);
             const video = this.player;
 
 
@@ -35,25 +39,52 @@ export default class Controls extends Component {
 
 
     }
+
+    
+
+
     _onTouchInsidePlayer() {
 
         if (this.player.paused) {
             this.player.play();
+            console.log(this.player);
         } else {
 
             this.player.pause();
         }
     }
+
+
+ 
+    
+    
+
+
     render() {
 
         return (
             <div className='container'>
 
-                <button className='play-button' onClick={this._onTouchInsidePlayer} ref={(player) => this.player = player}  ></button>
-                <video controls={false} onClick={this._onTouchInsidePlayer} ref={(player) => this.player = player} autoPlay={true} hidden/>
+                {this.play()}
+                <audio className="player" controls={true}  onClick={this._onTouchInsidePlayer} ref={(player) => this.player = player}  />
+            
             </div>
+
         )
 
 
     }
 }
+
+
+
+{/* <button className='play-button' onClick={this._onTouchInsidePlayer} ref={(player) => this.player = player}  ></button> */}
+
+
+const mapStateToProps = (state) => {
+    return {
+        songs : state.songs
+    };
+};
+
+export default connect (mapStateToProps) (Controls);
