@@ -34,7 +34,6 @@ import {currentSong} from '../../redux/actions/songs';
     playSong(song){
  
         this.props.currentSong(song);
-        console.log(this.props.songs.currentSong.urlStreaming);
 
     }
 

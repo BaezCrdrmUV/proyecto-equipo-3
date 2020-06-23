@@ -20,7 +20,7 @@
         "artist" : "Los tigrsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssses del norte",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jp",
         "duration": "4:22"
 
@@ -34,7 +34,7 @@
         "artist" : "Los tigres e",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "duration": "4:22"
 
@@ -47,7 +47,7 @@
         "artist" : "Los tigres del norte",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "duration": "4:22"
 
@@ -60,7 +60,7 @@
         "artist" : "Los tigres del norte",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "duration": "4:22"
 
@@ -73,7 +73,7 @@
         "artist" : "Los tigres del norte",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "duration": "4:22"
 
@@ -86,7 +86,7 @@
         "artist" : "Los tigres del norte",
         "genre": "Rock",
         "year": "1999",
-        "urlStreaming": "adasdsadsada",
+        "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
         "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "duration": "4:22"
 

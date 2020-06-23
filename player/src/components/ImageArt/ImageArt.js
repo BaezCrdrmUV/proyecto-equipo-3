@@ -13,7 +13,6 @@ import {connect} from 'react-redux';
 
          const imageURL = this.props.songs.currentSong.urlImage;
 
-         console.log(this.props.songs.currentSong.urlImage)
          return imageURL;
 
      }

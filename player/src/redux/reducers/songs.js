@@ -3,10 +3,16 @@ const defaultState = {
     listSongs :[],
     currentSong:{
         id : "",
-        name: "",
+        title: "",
         album: "",
         urlImage: "https://i.imgur.com/rEDaelS.png",
-        urlStreaming:""
+        urlStreaming:"",
+        number : "",
+        genre : "",
+        year: "",
+        duration: "",
+        artist: ""
+        
     }
 
 }

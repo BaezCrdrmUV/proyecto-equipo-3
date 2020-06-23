@@ -22,10 +22,6 @@ const currentSong = (song) => {
 function getSong(songs){
 
     const listSongsResult = listSongsExample
-
-
-
-
     return listSongsResult;
 }
 

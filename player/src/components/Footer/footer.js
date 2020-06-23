@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import Controls from '../Controls/Controls';
+import {connect} from 'react-redux';
 
 
-export default class footer extends Component {
+class footer extends Component {
 
     render(){
+
+        const name = this.props.songs.currentSong.title;
+        const album = this.props.songs.currentSong.album;
+
         return(
             <div>
-                <h3>Country road</h3>
+                <h3>{name}</h3>
                 <br></br>
-                <h7>Kid A</h7>
+                <h7>{album}</h7>
                 <Controls></Controls>
             </div>
         )
@@ -17,4 +22,10 @@ export default class footer extends Component {
  
 }
 
+const mapStateToProps = (state) => {
+    return {
+        songs : state.songs
+    };
+};
 
+export default connect (mapStateToProps) (footer);
