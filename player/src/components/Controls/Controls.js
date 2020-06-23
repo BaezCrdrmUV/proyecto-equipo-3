@@ -65,18 +65,23 @@ import {currentSong} from '../../redux/actions/songs';
     nextSong (){
         const songsToPlay = this.props.songs.listSongs;
         var position = songsToPlay.indexOf(this.props.songs.currentSong);
+        var SongsLength = songsToPlay.length;
 
-        if(songsToPlay.length > position || songsToPlay.length !== position){
+        if(position +1 < SongsLength ){
             
             const nextSongToPlay = this.props.songs.listSongs[position+1]
             this.props.currentSong(nextSongToPlay);
-            console.log("eyy");
+            console.log(SongsLength, position, "true");
         }else{
-            console.log("owo");
+            console.log(SongsLength, position, "false");
+
         }
 
     }
     
+    
+
+
     render() {
 
         return (
