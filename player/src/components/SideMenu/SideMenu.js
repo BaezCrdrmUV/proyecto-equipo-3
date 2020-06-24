@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Playlist from '../playlists/playlist';
-import ImageArt from '../ImageArt/ImageArt';
 import './SideMenu.css'
 
 export default class SideMenu extends Component {
@@ -12,7 +11,7 @@ export default class SideMenu extends Component {
         return (
             <div>
 
-                <div>
+                <div className="elements">
                     <h1>Ougi Music</h1>
                     <ul className="side-menu-container">
                         <li className={"side-menu-item"}>Home</li>
@@ -28,10 +27,6 @@ export default class SideMenu extends Component {
                     <Playlist></Playlist>
                 </div >
 
-                <div>
-                    <ImageArt ></ImageArt>
-
-                </div>
 
             </div>
 

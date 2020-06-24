@@ -9,4 +9,8 @@
     background-color: rgb(163, 36, 36);
   }
   
-  
+  .zoom {
+    zoom: 2; /* Chrome */
+    transform: scale(2); /* FF, neglected by Chrome */
+    transform-origin: 0;
+}

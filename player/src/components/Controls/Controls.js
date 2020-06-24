@@ -28,17 +28,6 @@ import {currentSong} from '../../redux/actions/songs';
                 e.preventDefault();
                 return false;
             });
-
-            // let songsToPlay = this.props.songs.listSongs;
-            // let currentSongs = [];
-
-            // songsToPlay.forEach(songToPlay => {
-            //     console.log(songToPlay.urlStreaming);
-            //     currentSongs.push(songToPlay.urlStreaming);
-
-
-            // });
-
                 hls.loadSource(streamURL);
                 hls.attachMedia(song)
 
@@ -46,22 +35,19 @@ import {currentSong} from '../../redux/actions/songs';
                 song.play();
             });
 
-            console.log(this.player);
+            
+
         }
     }
+        onSongEnd() {        
+        if (this.player.ended) {
+            this.nextSong();
+        } 
+    }
+
+
+
   
-    // _onTouchInsidePlayer() {
-
-    //     if (this.player.paused) {
-    //         this.player.play();
-    //         console.log(this.player);
-    //     } else {
-
-    //         this.player.pause();
-    //     }        
-    // }
-
-
     nextSong (){
         const songsToPlay = this.props.songs.listSongs;
         var position = songsToPlay.indexOf(this.props.songs.currentSong);
@@ -79,6 +65,19 @@ import {currentSong} from '../../redux/actions/songs';
 
     }
     
+    previousSong(){
+        const songsToPlay = this.props.songs.listSongs;
+        var position = songsToPlay.indexOf(this.props.songs.currentSong);
+        var SongsLength = songsToPlay.length;
+
+        if(position +1 < SongsLength && position !== 0){
+            
+            const nextSongToPlay = this.props.songs.listSongs[position-1]
+            this.props.currentSong(nextSongToPlay);
+        }else{
+
+        }
+    }
     
 
 
@@ -86,11 +85,16 @@ import {currentSong} from '../../redux/actions/songs';
 
         return (
             <div className='container'>
-
+                <button className= "previousButton" onClick={ () => this.previousSong() } >
+                    <i className="fa fa-chevron-circle-left	">
+                    </i>
+                </button>
                 {this.play()}
-
-                <audio className="player" controls={true}  onClick={this._onTouchInsidePlayer} ref={(player) => this.player = player}  />
-                <button className="button" onClick={ () => this.nextSong()  }>hola</button>
+                <audio className="player" controls={true}  ref={(player) => this.player = player} onEnded={() => this.onSongEnd()} />
+                <button className="nextButton" onClick={ () => this.nextSong()  }>
+                    <i className="fa fa-chevron-circle-right"></i>
+                </button>
+                
             </div>
 
         )

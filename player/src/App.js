@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import ImageArt from './components/ImageArt/ImageArt';
+
 
 
 import Footer from './components/Footer/footer';
@@ -21,7 +22,9 @@ function App() {
         <div className='left-side-section'>
           <SideMenu></SideMenu>    
         </div >        
-
+        <div>
+          <ImageArt ></ImageArt>
+        </div>
         <div className="main-section">
           <Header></Header>
           <div className='main-section-container' >

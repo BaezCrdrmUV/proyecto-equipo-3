@@ -37,6 +37,10 @@
       position: relative;
       left: -18px;
   }
+
+  .elements{
+    overflow: auto;
+  }
   
 
   
