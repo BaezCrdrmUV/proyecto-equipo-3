@@ -8,28 +8,18 @@ import {currentSong} from '../../redux/actions/songs';
 
  class TrackList extends Component {
 
-
-    // state = {
-    //     songs: []
-    // }
-    
-    // async componentDidMount() {
-    //     this.props.getSelectedPlaylist(this.props.elementToRender.id);
-    //     console.log(this.props);
-    //     const data = listSongsExample;
-    //     this.setState({ songs: data })
-    // }
-
-
-
+   
 
     componentDidMount(){
         this.props.getSelectedPlaylist(this.props.elementToRender.id);
         const selectedPlaylist = this.props.playlists.selectedPlaylist;
         const songsInPlaylist = selectedPlaylist.songs; 
         this.props.getSongs(songsInPlaylist);
-    }
+        console.log(songsInPlaylist);
+        console.log(this.props);
 
+    }
+ 
 
     playSong(song){
  
@@ -38,8 +28,6 @@ import {currentSong} from '../../redux/actions/songs';
     }
 
     renderSongs() {
- 
-
         return (
             <div>
                 {
@@ -73,7 +61,7 @@ import {currentSong} from '../../redux/actions/songs';
 
     render() {
         return (
-
+            
 
             <div>
                 <div className="section-title">Playlist</div>
@@ -93,7 +81,6 @@ import {currentSong} from '../../redux/actions/songs';
                 </div>
 
                 {this.renderSongs()}
-
             </div>
 
         )

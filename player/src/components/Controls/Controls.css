@@ -7,7 +7,7 @@
 .container{
     position: absolute;
     height: 120px;
-    bottom: -52px;
+    bottom: -60px;
     margin-left: 550px;
 }
 
@@ -22,15 +22,16 @@
     position: fixed;
     cursor: pointer;
     margin-left: 10px;
-    font-size: 35px;
+    font-size: 25px;
 
 }
 
 .previousButton{
     position: fixed;
     cursor: pointer;
+    margin-right: 50px;
     left: 500px;
-    font-size: 35px;
+    font-size: 25px;
 
 }
 

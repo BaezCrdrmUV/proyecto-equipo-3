@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux';
+import {renderAlbumLists} from '../../redux/actions/elementToRender'
 import Playlist from '../playlists/playlist';
 import './SideMenu.css'
 
-export default class SideMenu extends Component {
+ class SideMenu extends Component {
 
 
 
@@ -17,8 +18,9 @@ export default class SideMenu extends Component {
                         <li className={"side-menu-item"}>Home</li>
                         <li className="side-menu-item">Genres</li>
                         <br></br>
-                        <h2 className="user-library-header">Your Library</h2>
-                        <li className="side-menu-item">Albums</li>
+                        <h2 className="user-library-header" >Your Library</h2>
+                        <li className="side-menu-item"  onClick={() => {
+                                    this.props.renderAlbumLists(1) }} >Albums</li>
                         <li className="side-menu-item">Artists</li>
                         <li className="side-menu-item">songs</li>
 
@@ -33,3 +35,10 @@ export default class SideMenu extends Component {
         )
     }
 }
+
+const mapDispatchToProps = { 
+    renderAlbumLists
+    
+}
+
+export default connect (null, mapDispatchToProps) (SideMenu);

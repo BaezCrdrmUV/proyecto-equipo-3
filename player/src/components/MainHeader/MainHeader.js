@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 
 
 ToRender(){
-    switch(this.props.elementToRender.toRender ){
+    switch(this.props.elementToRender.toRender){
         case "renderPlaylists" :{
             return (
                 <div>
@@ -16,13 +16,19 @@ ToRender(){
                 </div>
             );
         }
+
+        case "renderAlbumLists" :{
+            return (
+                <div>
+                    <p>albums</p>
+                </div>
+            )
+        }
         default:
             return null;
     }
     
 }
-    
-
 
     render() {
         return (
