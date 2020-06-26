@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 class Login extends Component {
@@ -57,9 +58,12 @@ class Login extends Component {
             Submit
             </Button>
 
-          <Button className="button-register" variant="link" type="button" >
-            Register
-            </Button>
+          <Link to="/register">
+              <Button className="button-register" variant="link" type="button" >
+                Register
+              </Button>
+          </Link>
+
         </Form>
 
       </div>

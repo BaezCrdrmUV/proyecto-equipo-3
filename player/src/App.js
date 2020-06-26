@@ -9,13 +9,12 @@ import Header from './components/Header/Header';
 import MainHeader from './components/MainHeader/MainHeader';
 import SideMenu from './components/SideMenu/SideMenu';
 import Login from './components/login/login';
-import store from './redux/store'
 
 
 function App() {
   return (
     <Router>
-      <Route path={"/login", "/"}>
+      <Route path={"/login"}>
         <Login class="login"></Login>
       </Route>
       <Route path="/register">
