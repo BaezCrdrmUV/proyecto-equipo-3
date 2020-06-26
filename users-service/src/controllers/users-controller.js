@@ -1,13 +1,15 @@
-const bcrypt = require('bcrypt');
 const Users = require('../mongo/models/user.js');
-
+const bcrypt = require('bcryptjs');
 
 const login = async(req, res) => {
         try {      
                 const {username, password} = req.body;
                 const user = await Users.findOne({username});
                 if(user){
+
+                    // const isOk = (password === user.password);
                     const isOk = await bcrypt.compare(password, user.password);
+                    console.log(password, user.password);
                     if(isOk){
                         res.send({status:'ok', data: {}});
                     }else{
@@ -17,6 +19,7 @@ const login = async(req, res) => {
                     res.status(401).send({status:'USER_NOT_FOUND', message: 'usuario no encontrado'});
                 }
             } catch (error) {
+                console.log(error);
                 res.status(500).send({status:'ERROR', message: 'error'});
             }
 
@@ -28,13 +31,14 @@ const createUser = async(req, res) =>{
         try{
             const {username, password, email} = req.body;
     
-            const hash =  await bcrypt.hash(password, 15);
+            // const hash =  await bcrypt.hash(password, 15);
     
     
             await Users.create({
                 username,
                 email,
-                password: hash,    
+                password
+              //  password: hash,    
             })
     
             res.send({status: 'ok', message: 'usuario creado' });
