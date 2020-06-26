@@ -4,7 +4,9 @@
   "description": "Api gateway in charge of management of the petitions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon OugiMusicGateway/server.js",
+    "start": "node OugiMusicGateway/server.js"
   },
   "repository": {
     "type": "git",
