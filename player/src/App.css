@@ -9,12 +9,13 @@ h3 {
 
 
 body {
-    font-family: 'Proxima Nova', Georgia, sans-serif;
-    margin: 0 auto;
-    padding: 0;
-    background: rgb(24, 24, 24);
-    color: #fff;
+  font-family: 'Proxima Nova', Georgia, sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  background: rgb(24, 24, 24);
+  color: #fff;
 }
+
 
 .app-container {
   display: flex;

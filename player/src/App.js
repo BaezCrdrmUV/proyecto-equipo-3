@@ -2,44 +2,68 @@ import React from 'react';
 import './App.css';
 import ImageArt from './components/ImageArt/ImageArt';
 
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Footer from './components/Footer/footer';
 import Header from './components/Header/Header';
 import MainHeader from './components/MainHeader/MainHeader';
 import SideMenu from './components/SideMenu/SideMenu';
+import Login from './components/login/login';
 import store from './redux/store'
 
 
 function App() {
-
-  console.log(store.getState());
   return (
-    <div className="App">
+    <Router>
+      <Route path={"/login", "/"}>
+        <Login class="login"></Login>
+      </Route>
+      <Route path="/register">
+        <Register></Register>
+      </Route>
+      <Route path="/player">
+        <Player></Player>
+      </Route>
+    </Router>
+  );
+}
 
-      <div className='app-container'>
-
-        <div className='left-side-section'>
-          <SideMenu></SideMenu>    
-        </div >        
-        <div>
-          <ImageArt ></ImageArt>
-        </div>
-        <div className="main-section">
-          <Header></Header>
-          <div className='main-section-container' >
-            <MainHeader></MainHeader>
 
 
+function Register(){
+  return (
+    <div>
+      Register
+    </div>
+  )
+}
+
+function Player() {
+  return (
+    <div>
+      <div className="App">
+
+        <div className='app-container'>
+
+          <div className='left-side-section'>
+            <SideMenu></SideMenu>
+          </div >
+          <div>
+            <ImageArt ></ImageArt>
+          </div>
+          <div className="main-section">
+            <Header></Header>
+            <div className='main-section-container' >
+              <MainHeader></MainHeader>
+            </div>
           </div>
         </div>
-      </div>
-      <div className = 'footer'>
-      <Footer></Footer>
-
+        <div className='footer'>
+          <Footer></Footer>
+        </div>
       </div>
     </div>
-  );
+  )
 }
 
 
