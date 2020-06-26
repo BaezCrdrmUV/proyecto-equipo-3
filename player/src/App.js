@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 import ImageArt from './components/ImageArt/ImageArt';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 
 import Footer from './components/Footer/footer';
 import Header from './components/Header/Header';
 import MainHeader from './components/MainHeader/MainHeader';
 import SideMenu from './components/SideMenu/SideMenu';
 import Login from './components/login/login';
-
+import Register from './components/Register/Register'
 
 function App() {
   return (
@@ -29,13 +29,7 @@ function App() {
 
 
 
-function Register(){
-  return (
-    <div>
-      Register
-    </div>
-  )
-}
+
 
 function Player() {
   return (

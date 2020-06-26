@@ -27,6 +27,12 @@ function reducer(state = defaultState, { type, payload }) {
             
         }
 
+        case 'userRegister':{
+            return{
+                ...state
+            }
+        }
+
         default:
             return state;
     }
