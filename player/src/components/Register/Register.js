@@ -3,6 +3,8 @@ import './Register.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
+import { createUser } from '../../redux/actions/user';
+
 
 class Register extends Component {
 
@@ -36,7 +38,7 @@ class Register extends Component {
 
     onSumbit(e) {
         e.preventDefault();
-
+        this.props.createUser(this.state.username, this.state.password, this.state.email);
     }
 
 
@@ -83,7 +85,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = {
-
+    createUser
 }
 
 

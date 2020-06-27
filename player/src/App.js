@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ImageArt from './components/ImageArt/ImageArt';
+import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 
@@ -12,23 +13,28 @@ import Login from './components/login/login';
 import Register from './components/Register/Register'
 
 function App() {
+
   return (
     <Router>
-      <Route path={"/login"}>
-        <Login class="login"></Login>
+      <Switch>
+      <PrivateRoute isLoggedIn={ () => this.props.user.loginStatus } path="/" component={Player} exact/>
+        <Route path={"/login"} component={Login} exact></Route>
+        {/* <Route path="/player" component={Player}></Route> */}
+      </Switch>
+
+      <Route path="/register" component={Register} exact>
       </Route>
-      <Route path="/register">
-        <Register></Register>
-      </Route>
-      <Route path="/player">
-        <Player></Player>
-      </Route>
+
     </Router>
   );
 }
 
 
 
+const PrivateRoute = ({ isLoggedIn, ...props }) =>
+  isLoggedIn.status === "ok"
+    ? <Route { ...props } />
+    : <Redirect to="/login" />
 
 
 function Player() {
@@ -60,6 +66,13 @@ function Player() {
 }
 
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(App);
 
 
-export default App;
+// export default App;

@@ -14,7 +14,7 @@ const defaultState = {
         token: "",
     },
 
-    loginStatus: false 
+    loginStatus: "" 
 
 }
 
@@ -22,7 +22,8 @@ function reducer(state = defaultState, { type, payload }) {
     switch (type) {
         case'userLogin': {
             return{
-                ...state
+                ...state,
+                loginStatus : state.loginStatus = payload
             }
             
         }

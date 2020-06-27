@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect,  } from "react-router-dom";
 
 
 class Login extends Component {
@@ -14,6 +14,7 @@ class Login extends Component {
     this.state = {
       username: "",
       password: ""
+      
     }
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -31,10 +32,29 @@ class Login extends Component {
     this.setState({password: e.target.value});
   }
 
-  onSumbit (e){
+ async onSumbit (e){
     e.preventDefault();
-    this.props.userLogin(this.state.username, this.state.password);
+    await this.props.userLogin(this.state.username, this.state.password);
+    const result = await this.props.user.loginStatus;
+    this.redirect(result);
+  }
 
+   redirect(result){
+
+    switch(result.status){
+      case "ok":{
+        console.log("todo chido");
+        break;
+      }
+      case "INVALID_PASSWORD":{
+        console.log("contraseña mal");
+        break;
+      }
+      case "USER_NOT_FOUND":{
+        console.log("usuario no encontrado");
+        break;
+      }
+    }
   }
 
   render() {
@@ -63,9 +83,8 @@ class Login extends Component {
                 Register
               </Button>
           </Link>
-
         </Form>
-
+        
       </div>
     );
 
@@ -75,7 +94,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    login: state.login
+    user: state.user
   };
 };
 
