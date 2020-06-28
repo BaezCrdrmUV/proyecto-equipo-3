@@ -6,17 +6,26 @@ admin:
 apiEndpoints:
   api:
     host: localhost
-    paths: '/ip'
+    paths: 
+      - '/ip' 
+      - '/get'
+  upload:
+    host: localhost
+    paths:
+      - '/uploadsong'
+  streaming:
+    host: localhost
+
 serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
+  uploadService:
+    url: 'http://localhost:3001'
+  streamingService:
+    url: 'http://localhost:3000'
 policies:
-  - basic-auth
-  - cors
   - expression
-  - key-auth
   - log
-  - oauth2
   - proxy
   - rate-limit
 pipelines:
@@ -24,9 +33,25 @@ pipelines:
     apiEndpoints:
       - api
     policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-    # - key-auth:
       - proxy:
           - action:
               serviceEndpoint: httpbin 
               changeOrigin: true
+  upload:
+    apiEndpoints:
+      - upload
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: uploadService 
+              changeOrigin: true
+  streaming:
+    apiEndpoints:
+      - streaming
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: streamingService 
+              changeOrigin: true
+
+
