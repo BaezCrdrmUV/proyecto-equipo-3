@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/BaezCrdrmUV/proyecto-equipo-3#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.18",
     "node-media-server": "^2.1.9",
