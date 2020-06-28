@@ -19,6 +19,7 @@ const defaultState = {
 }
 
 function reducer(state = defaultState, { type, payload }) {
+    console.log(payload)
     switch (type) {
         case'userLogin': {
             return{

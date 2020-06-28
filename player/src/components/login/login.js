@@ -13,7 +13,9 @@ class Login extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      loginError: "",
+      loginSuccess:"",
       
     }
 
@@ -36,26 +38,31 @@ class Login extends Component {
     e.preventDefault();
     await this.props.userLogin(this.state.username, this.state.password);
     const result = await this.props.user.loginStatus;
-    this.redirect(result);
+    this.formResult(result);
   }
 
-   redirect(result){
+   formResult(result){
 
+    console.log(this.props.user.loginStatus);
     switch(result.status){
       case "ok":{
         console.log("todo chido");
+        this.setState({loginSuccess: result.status});
         break;
       }
       case "INVALID_PASSWORD":{
         console.log("contraseña mal");
+        this.setState({loginError: "Contraseña incorrecta"});
         break;
       }
       case "USER_NOT_FOUND":{
         console.log("usuario no encontrado");
+        this.setState({loginError: "Usuario no encontrado"});
         break;
       }
     }
   }
+  
 
   render() {
     return (
@@ -84,11 +91,13 @@ class Login extends Component {
               </Button>
           </Link>
         </Form>
-        
+        {this.state.loginError && <h3>{this.state.loginError}</h3>}
+        {this.state.loginSuccess && <Redirect to="/"></Redirect>}
+
       </div>
     );
 
-  }
+    }
 }
 
 
