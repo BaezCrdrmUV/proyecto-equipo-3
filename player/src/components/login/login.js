@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
+import { updateLoginStatus } from '../../redux/actions/user';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect,  } from "react-router-dom";
 
 
@@ -43,11 +44,14 @@ class Login extends Component {
 
    formResult(result){
 
-    console.log(this.props.user.loginStatus);
     switch(result.status){
       case "ok":{
         console.log("todo chido");
+        this.props.updateLoginStatus("ok");
+        console.log(this.props.user.loginStatus);
         this.setState({loginSuccess: result.status});
+
+
         break;
       }
       case "INVALID_PASSWORD":{
@@ -110,7 +114,8 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = {
-  userLogin
+  userLogin,
+  updateLoginStatus
 }
 
 

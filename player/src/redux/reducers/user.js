@@ -19,7 +19,6 @@ const defaultState = {
 }
 
 function reducer(state = defaultState, { type, payload }) {
-    console.log(payload)
     switch (type) {
         case'userLogin': {
             return{
@@ -32,6 +31,13 @@ function reducer(state = defaultState, { type, payload }) {
         case 'userRegister':{
             return{
                 ...state
+            }
+        }
+
+        case 'updateLoginStatus': {
+            return{
+                ...state,
+                loginStatus : state.loginStatus = payload
             }
         }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ImageArt from './components/ImageArt/ImageArt';
 import { connect } from 'react-redux';
@@ -12,27 +12,47 @@ import SideMenu from './components/SideMenu/SideMenu';
 import Login from './components/login/login';
 import Register from './components/Register/Register'
 
-function App() {
+class App extends React.Component {
 
+  state = {
+    loggedIn: false // user is not logged in
+  };
+
+  componentDidUpdate() {
+    if(this.props.user.loginStatus === 'ok' && !this.state.loggedIn ){
+        console.log('ok');
+        if (!this.state.isLogged) {
+            this.setState({
+              loggedIn: true
+            });
+        }
+    }
+    console.log(this.props.user.loginStatus);
+  }
+
+  render(){
   return (
+  
     <Router>
       <Switch>
-      <PrivateRoute isLoggedIn={ () => this.props.user.loginStatus } path="/" component={Player} exact/>
+        <PrivateRoute isLoggedIn={ this.state.loggedIn } path="/" component={Player} exact />
         <Route path={"/login"} component={Login} exact></Route>
         {/* <Route path="/player" component={Player}></Route> */}
       </Switch>
 
       <Route path="/register" component={Register} exact>
       </Route>
+      {this.updateState}
 
     </Router>
+    
   );
+}
 }
 
 
-
 const PrivateRoute = ({ isLoggedIn, ...props }) =>
-  isLoggedIn.status === "ok"
+  isLoggedIn 
     ? <Route { ...props } />
     : <Redirect to="/login" />
 
