@@ -4,39 +4,39 @@ admin:
   port: 9876
   host: localhost
 apiEndpoints:
-  api:
-    host: localhost
-    paths: 
-      - '/ip' 
-      - '/get'
   upload:
     host: localhost
     paths:
       - '/uploadsong'
   streaming:
     host: localhost
+  download:
+    host: localhost
 
 serviceEndpoints:
-  httpbin:
-    url: 'https://httpbin.org'
   uploadService:
     url: 'http://localhost:3001'
   streamingService:
     url: 'http://localhost:3000'
+  douwnloadService:
+    url: 'http://localhost:3002'
+  listService:
+    url: 'http://localhost:3003'
+  metadataService:
+    url: 'http://localhost:3004'
+  usersService:
+    url: 'http://localhost:3005'
+  libraryService:
+    url: 'http://localhost:3006'
+  imageService:
+    url: 'http://localhost:3007'
 policies:
+  - cors
   - expression
   - log
   - proxy
   - rate-limit
 pipelines:
-  default:
-    apiEndpoints:
-      - api
-    policies:
-      - proxy:
-          - action:
-              serviceEndpoint: httpbin 
-              changeOrigin: true
   upload:
     apiEndpoints:
       - upload
@@ -53,5 +53,12 @@ pipelines:
           - action:
               serviceEndpoint: streamingService 
               changeOrigin: true
-
+  download:
+    apiEndpoints:
+      - download
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: douwnloadService
+              changeOrigin: true
 
