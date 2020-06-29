@@ -12,6 +12,8 @@ apiEndpoints:
     host: localhost
   download:
     host: localhost
+    paths:
+      - '/getSongDownload'
 
 serviceEndpoints:
   uploadService:
