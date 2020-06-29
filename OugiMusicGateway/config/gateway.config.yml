@@ -8,18 +8,21 @@ apiEndpoints:
     host: localhost
     paths:
       - '/uploadsong'
-  streaming:
-    host: localhost
   download:
     host: localhost
     paths:
       - '/getSongDownload'
 
+
+  # This has to be last always
+  streaming:
+    host: localhost
+
 serviceEndpoints:
   uploadService:
-    url: 'http://localhost:3001'
-  streamingService:
     url: 'http://localhost:3000'
+  streamingService:
+    url: 'http://localhost:3001'
   douwnloadService:
     url: 'http://localhost:3002'
   listService:
@@ -63,4 +66,3 @@ pipelines:
           - action:
               serviceEndpoint: douwnloadService
               changeOrigin: true
-
