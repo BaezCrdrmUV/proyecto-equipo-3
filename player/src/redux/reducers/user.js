@@ -14,7 +14,9 @@ const defaultState = {
         token: "",
     },
 
-    loginStatus: "" 
+    loginStatus: "",
+
+    registerStatus: "" 
 
 }
 
@@ -30,7 +32,8 @@ function reducer(state = defaultState, { type, payload }) {
 
         case 'userRegister':{
             return{
-                ...state
+                ...state,
+                registerStatus: state.registerStatus = payload
             }
         }
 

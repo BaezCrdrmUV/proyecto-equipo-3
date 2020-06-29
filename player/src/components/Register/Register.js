@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { createUser } from '../../redux/actions/user';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect,  } from "react-router-dom";
+
 
 
 class Register extends Component {
@@ -11,9 +13,12 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
             username: "",
             password: "",
-            email: ""
+            email: "",
+            registerError: "",
+            registerSuccess: ""
         }
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -36,9 +41,26 @@ class Register extends Component {
     }
 
 
-    onSumbit(e) {
+    async onSumbit(e) {
         e.preventDefault();
-        this.props.createUser(this.state.username, this.state.password, this.state.email);
+        await this.props.createUser(this.state.username, this.state.password, this.state.email);
+        const result = await this.props.user.registerStatus;
+        this.formResult(result);
+    }
+
+    formResult(result){
+
+        switch(result.status){
+
+            case "ok":{
+              console.log("todo chido");
+              this.setState({registerSuccess: result.status});
+              break;
+            }
+
+
+        }
+
     }
 
 
@@ -68,8 +90,10 @@ class Register extends Component {
                     <Button variant="primary" type="submit">
                         Register
                     </Button>
-
                 </Form>
+
+                {this.state.registerSuccess && <Redirect to="/login"></Redirect>}
+
             </div>
         )
     }
@@ -78,6 +102,7 @@ class Register extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        user: state.user
 
     };
 };
