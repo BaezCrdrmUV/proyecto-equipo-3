@@ -11,5 +11,5 @@ app.use(routes);
 
 const PORT = 3000;
 app.listen(PORT, function(){
-  console.log("server running");
+  console.log("server running on: "+ PORT);
 });
