@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/BaezCrdrmUV/proyecto-equipo-3#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
     "mongoose": "^5.9.17",

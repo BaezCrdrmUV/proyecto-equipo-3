@@ -3,9 +3,11 @@ const app = express();
 const path = require('path');
 const routes = require('./routes/upload-routes');
 const queue = require('./queue.js')
+const dotenv = require('dotenv');
 global.songDir = path.resolve('../songs');
 const queueTime = 12000;
 
+dotenv.config();
 
 app.use(express.json());
 app.use(routes);
@@ -15,7 +17,7 @@ const PORT = 3000;
 var mongoose = require("mongoose");
 mongoose.set('useFindAndModify', false);
 mongoose
-.connect("mongodb://localhost:27017/songs", {
+.connect(process.env.MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

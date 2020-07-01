@@ -73,16 +73,11 @@ function resizeAudio(song, bitrate) {
 
 const createSong = async(req, songName) =>{
  
-    const {title, number, album , artist, genre, year} = req.body;
+    const {title} = req.body;
     const filename = songName;
     const status = 'Waiting'
     await Songs.create({
         title,
-        number,
-        album,
-        artist, 
-        genre,
-        year,
         filename,
         status
     });
