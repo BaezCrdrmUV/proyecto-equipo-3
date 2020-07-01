@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const albumSchema = new Schema({
     albumname : {type: String, required: true},
-    artist : {type: String, required: true},
+    artist : {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'artists'},
     releaseyear: {type:String, required: true},
     urlImage: {type: String, required: true}
 });
