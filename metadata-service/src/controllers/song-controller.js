@@ -37,8 +37,11 @@ const getSong = async (req, res) => {
     try {
         const { songId } = req.body;
         const song = await Songs.findById(songId);
-
-        res.send({ status: 'ok', data: song });
+        if (song == null){
+            res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: song });
+        }
 
     } catch (error) {
         res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
@@ -78,7 +81,11 @@ const getArtist = async (req, res) => {
         const { artistId } = req.body;
         const artist = await Artist.findById(artistId);
 
-        res.send({ status: 'ok', data: artist });
+        if (artist == null){
+            res.status(404).send({ status: 'ERROR', message: 'Artista no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: artist });
+        }
 
     } catch (error) {
         res.status(404).send({ status: 'ERROR', message: 'Artista no encontrado' });
@@ -118,8 +125,11 @@ const getAlbum = async (req, res) => {
     try {
         const { albumId } = req.body;
         const album = await Songs.findById(albumId);
-
-        res.send({ status: 'ok', data: album });
+        if (album == null){
+            res.status(404).send({ status: 'ERROR', message: 'Album no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: album });
+        }
 
     } catch (error) {
         res.status(404).send({ status: 'ERROR', message: 'Album no encontrado' });
