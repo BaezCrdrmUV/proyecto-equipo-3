@@ -74,8 +74,9 @@ const getArtist = async (req, res) =>{
 const createAlbum = async(req, res) =>{
  
     try{
-        const {artist, releaseyear, urlImage} = req.body;
+        const {albumname, artist, releaseyear, urlImage} = req.body;
         await Album.create({
+            albumname,
             artist, 
             releaseyear,
             urlImage
