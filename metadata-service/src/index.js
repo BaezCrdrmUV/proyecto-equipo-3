@@ -11,10 +11,10 @@ app.use(express.json());
 
 app.use(routes);
 
-const PORT = process.env.POR || 4000;
+const PORT = process.env.PORT || 4000;
 
 
-
+console.log(PORT);
 mongoose
   .connect(process.env.MONGO, {
     useNewUrlParser: true,
