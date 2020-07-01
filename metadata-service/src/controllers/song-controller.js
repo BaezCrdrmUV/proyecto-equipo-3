@@ -71,7 +71,6 @@ const getArtist = async (req, res) =>{
 
 }
 
-
 const createAlbum = async(req, res) =>{
  
     try{
@@ -84,9 +83,13 @@ const createAlbum = async(req, res) =>{
         res.send({status: 'ok', message: 'Album creado' });
 
     }catch(ERROR){
-        console.log(ERROR);
+        if (ERROR.name == 'ValidationError'){
+            res.status(400).send({status: 'ERROR', message: 'Valores ingresados invalidos' });
+        }else{
+            console.log(ERROR);
         
-        res.status(505).send({status: 'ERROR', message: 'Album no creado' });
+            res.status(505).send({status: 'ERROR', message: 'Album no creado' });
+        }
     }
 }
 
