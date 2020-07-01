@@ -71,11 +71,7 @@ const getArtist = async (req, res) =>{
 
 }
 
-const albumSchema = new Schema({
-    artist : {type: String, required: true},
-    releaseyear: {type:String, required: true},
-    urlImage: {type: String, required: true}
-});
+
 const createAlbum = async(req, res) =>{
  
     try{
