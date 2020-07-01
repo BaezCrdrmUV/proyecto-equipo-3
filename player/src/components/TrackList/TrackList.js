@@ -8,17 +8,45 @@ import {currentSong} from '../../redux/actions/songs';
 
  class TrackList extends Component {
 
-   
+    constructor(props) {
+        super(props);
+        this.state = {
+          selectedSongs: ""
+          
+        }
+
+
+        // "react": "^16.13.1",
+        // "react-bootstrap": "^1.0.1",
+        // "react-dom": "^16.13.1",
+    }
 
     componentDidMount(){
-        this.props.getSelectedPlaylist(this.props.elementToRender.id);
-        const selectedPlaylist = this.props.playlists.selectedPlaylist;
-        const songsInPlaylist = selectedPlaylist.songs; 
-        this.props.getSongs(songsInPlaylist);
-        console.log(songsInPlaylist);
-        console.log(this.props);
+            this.props.getSelectedPlaylist(this.props.elementToRender.id);
+            const selectedPlaylist = this.props.playlists.selectedPlaylist;
+            const songsInPlaylist = selectedPlaylist.songs; 
+            this.props.getSongs(songsInPlaylist);
+            console.log(songsInPlaylist);
+            console.log(this.props);
+            this.setState({selectedSongs: this.props.elementToRender.id});
 
     }
+
+    componentDidUpdate(){
+        if(this.state.selectedSongs !== this.props.elementToRender.id){
+            this.setState({selectedSongs: this.props.elementToRender.id});
+            this.props.getSelectedPlaylist(this.props.elementToRender.id);
+            const selectedPlaylist = this.props.playlists.selectedPlaylist;
+            const songsInPlaylist = selectedPlaylist.songs; 
+            this.props.getSongs(songsInPlaylist);
+            console.log(songsInPlaylist);
+            console.log(this.props);
+        }
+
+    }
+
+  
+   
  
 
     playSong(song){

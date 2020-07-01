@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
  class MainHeader extends Component {
 
 
+
+
+
 ToRender(){
     switch(this.props.elementToRender.toRender){
         case "renderPlaylists" :{

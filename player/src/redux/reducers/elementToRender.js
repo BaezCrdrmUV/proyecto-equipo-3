@@ -10,7 +10,7 @@ function reducer(state = defaultState, {type, payload}){
             return {
                 ...state,
                 toRender: state.toRender = "renderPlaylists",
-                id : payload
+                id : state.id = payload
             }
         }
         case 'renderAlbumLists':{

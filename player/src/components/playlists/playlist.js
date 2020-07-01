@@ -18,18 +18,15 @@ class playlist extends Component {
     // }
 
 
+   
+   
 
     GetRenderPlayLists () {
-
-
-
         const playlists = this.props.userplaylists.playlists;
-        
         return (     
             <div>
                 {
                     playlists.map(playlist => {
-
                         return <div key={playlist.id} > 
                             <div className="playlist-item" 
                                 onClick={() => {
