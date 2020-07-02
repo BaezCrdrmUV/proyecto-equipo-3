@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    upload-service:
+        build: .
+        volumes: 
+            - ./songs:/var/songs
+        ports: 
+            - 80:3000
