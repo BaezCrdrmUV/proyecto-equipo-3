@@ -48,7 +48,7 @@ async function doRegister(username, password, email) {
     }
 
     try {
-        const response = await fetch('http://localhost:4000/create', settings);
+        const response = await fetch('http://localhost:9000/create', settings);
         const json = await response.json();
         console.log(json);
         return json;
@@ -74,7 +74,7 @@ async function doLogin(user, password) {
         })
     }
     try {
-        const response = await fetch('http://localhost:4000/login', settings);
+        const response = await fetch('http://localhost:9000/login', settings);
         const json = await response.json();
         console.log(json);
         return json;

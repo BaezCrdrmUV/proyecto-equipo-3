@@ -15,7 +15,8 @@ import Register from './components/Register/Register'
 class App extends React.Component {
 
   state = {
-    loggedIn: true 
+    loggedIn : true
+    // loggedIn: "" 
   };
 
   componentDidUpdate() {

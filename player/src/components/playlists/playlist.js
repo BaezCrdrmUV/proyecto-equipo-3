@@ -1,7 +1,7 @@
 import React, { Component,useState } from 'react'
 import "./playlist.css"
 import {connect} from 'react-redux';
-import {Modal, Button} from 'react-bootstrap'
+import {Modal, Button, Form} from 'react-bootstrap'
 // import playlistsExample from '../../example/playlist.json'
 import {renderPlaylists} from '../../redux/actions/elementToRender'
 
@@ -66,9 +66,23 @@ class playlist extends Component {
 
 function RenderNewPlaylistModal  ()  {
     const [show, setShow] = useState(false);
+    const [name, setName] = useState("");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
+
+
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+
+    // }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        alert(`Submitting Name ${name}`)
+    }
   
     return (
       <>
@@ -77,18 +91,34 @@ function RenderNewPlaylistModal  ()  {
         </Button>
   
         <Modal show={show} onHide={handleClose}>
+
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Create new playlist</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
+
+          <Modal.Body>
+
+          <Form onSubmit={handleSubmit} >
+          <Form.Group controlId="formPlaylist">
+                        <Form.Label>Playlist</Form.Label>
+                        <Form.Control type="playlist" placeholder="Enter Plyalist" value={name} onChange={e => setName(e.target.value)} required />
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit">
+                        Save
+                    </Button>
+                </Form>
+
+
+          </Modal.Body>
+          {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
               Save Changes
             </Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       </>
     );

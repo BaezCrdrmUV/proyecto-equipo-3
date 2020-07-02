@@ -46,19 +46,22 @@ class Register extends Component {
         await this.props.createUser(this.state.username, this.state.password, this.state.email);
         const result = await this.props.user.registerStatus;
         this.formResult(result);
+        
     }
 
-    formResult(result){
+    formResult(result) {
+        if (!result) {
+            alert('no connection')
 
-        switch(result.status){
+        } else {
+            switch (result.status) {
 
-            case "ok":{
-              console.log("todo chido");
-              this.setState({registerSuccess: result.status});
-              break;
+                case "ok": {
+                    console.log("todo chido");
+                    this.setState({ registerSuccess: result.status });
+                    break;
+                }
             }
-
-
         }
 
     }
