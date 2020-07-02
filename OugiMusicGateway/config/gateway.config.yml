@@ -12,6 +12,21 @@ apiEndpoints:
     host: localhost
     paths:
       - '/getSongDownload'
+  metadata:
+    host: localhost
+    paths:
+      - '/songs/createSong'
+      - '/songs/getSong'
+      - '/songs/createArtist'
+      - '/songs/getArtist'
+      - '/songs/createAlbum'
+      - '/songs/getAlbum'
+  users:
+    host: localhost
+    paths:
+      - '/login'
+      - '/create'
+      - '/tokenAuthorization'
 
 
   # This has to be last always
@@ -65,4 +80,20 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: downloadService
+              changeOrigin: true
+  metadata:
+    apiEndpoints:
+      - metadata
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: metadataService
+              changeOrigin: true
+  users:
+    apiEndpoints:
+      - users
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: usersService
               changeOrigin: true
