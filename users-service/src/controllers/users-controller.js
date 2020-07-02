@@ -1,5 +1,6 @@
 const Users = require('../mongo/models/user.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const login = async(req, res) => {
         try {      
@@ -9,9 +10,12 @@ const login = async(req, res) => {
 
                     // const isOk = (password === user.password);
                     const isOk = await bcrypt.compare(password, user.password);
-                    console.log(password, user.password);
                     if(isOk){
-                        res.send({status:'ok', data: {}});
+                        const token = jwt.sign({user}, process.env.SECRETKEY);
+                        res.status(200).send({
+                            message: 'Logeado correctamente',
+                            token: token
+                        })
                     }else{
                         res.status(403).send({status:'INVALID_PASSWORD', message: 'Contraseña incorrecta'});
                     }
@@ -31,14 +35,13 @@ const createUser = async(req, res) =>{
         try{
             const {username, password, email} = req.body;
     
-            // const hash =  await bcrypt.hash(password, 15);
+            const hash =  await bcrypt.hash(password, 15);
     
     
             await Users.create({
                 username,
                 email,
-                password
-              //  password: hash,    
+                password: hash,    
             })
     
             res.send({status: 'ok', message: 'usuario creado' });
