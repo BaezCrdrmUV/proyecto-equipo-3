@@ -1,17 +1,16 @@
 const Users = require('../mongo/models/user.js');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const tokenService = require('../service/token.js')
 
 const login = async(req, res) => {
         try {      
                 const {username, password} = req.body;
                 const user = await Users.findOne({username});
                 if(user){
-
                     // const isOk = (password === user.password);
                     const isOk = await bcrypt.compare(password, user.password);
                     if(isOk){
-                        const token = jwt.sign({user}, process.env.SECRETKEY);
+                        const token = tokenService.createToken(user);
                         res.status(200).send({
                             message: 'Logeado correctamente',
                             token: token
@@ -26,7 +25,6 @@ const login = async(req, res) => {
                 console.log(error);
                 res.status(500).send({status:'ERROR', message: 'error'});
             }
-
 }
 
 
@@ -63,4 +61,21 @@ const createUser = async(req, res) =>{
     
     };
 
-module.exports = {login, createUser};
+function tokenAuthorization(req,res,next){
+    if (!req.headers.authorization){
+        res.status(403).send("Access Forbidden");
+    }else{
+        const tokenCode = req.headers.authorization;
+        const token = tokenCode.split(' ')[1];
+        tokenService.decodeToken(token)
+        .then(response => {
+            res.status(200).send({message: 'Access Granted'});
+            next();
+        })
+        .catch(response => {
+            res.status(response.status).send({message: response.message})
+        })
+    }
+} 
+
+module.exports = {login, createUser, tokenAuthorization};
