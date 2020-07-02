@@ -23,7 +23,7 @@ serviceEndpoints:
     url: 'http://localhost:3000'
   streamingService:
     url: 'http://localhost:3001'
-  douwnloadService:
+  downloadService:
     url: 'http://localhost:3002'
   listService:
     url: 'http://localhost:3003'
@@ -64,5 +64,5 @@ pipelines:
     policies:
       - proxy:
           - action:
-              serviceEndpoint: douwnloadService
+              serviceEndpoint: downloadService
               changeOrigin: true
