@@ -2,18 +2,15 @@ http:
   port: 8081
 admin:
   port: 9876
-  host: localhost
+  hostname: localhost
 apiEndpoints:
   upload:
-    host: localhost
     paths:
       - '/uploadsong'
   download:
-    host: localhost
     paths:
       - '/getSongDownload'
   metadata:
-    host: localhost
     paths:
       - '/songs/createSong'
       - '/songs/getSong'
@@ -22,7 +19,6 @@ apiEndpoints:
       - '/songs/createAlbum'
       - '/songs/getAlbum'
   users:
-    host: localhost
     paths:
       - '/login'
       - '/create'
@@ -31,21 +27,21 @@ apiEndpoints:
 
   # This has to be last always
   streaming:
-    host: localhost
+    paths: '*'
 
 serviceEndpoints:
   uploadService:
-    url: 'http://localhost:3000'
+    url: 'http://upload-service:3000'
   streamingService:
-    url: 'http://localhost:3001'
+    url: 'http://streaming-service:3001'
   downloadService:
-    url: 'http://localhost:3002'
+    url: 'http://download-service:3002'
   listService:
     url: 'http://localhost:3003'
   metadataService:
-    url: 'http://localhost:3004'
+    url: 'http://metadata-service:3004'
   usersService:
-    url: 'http://localhost:3005'
+    url: 'http://users-service:3005'
   libraryService:
     url: 'http://localhost:3006'
   imageService:
