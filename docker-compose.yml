@@ -4,19 +4,19 @@ services:
     upload-service:
         build: 
         volumes: 
-            - ../songs:/var/songs
+            - ../../../songs:/var/songs
         ports: 
             - 3000:3000
     streaming-service:
         build: 
         volumes: 
-            - ../songs:/var/songs
+            - ../../../songs:/var/songs
         ports: 
             - 3001:3000
     download-service:
         build: 
         volumes: 
-            - ../songs:/var/songs
+            - ../../../songs:/var/songs
         ports: 
             - 3002:3000
     metadata-service:
