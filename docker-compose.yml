@@ -2,38 +2,32 @@ version: '3'
 
 services:
     upload-service:
-        build: 
-            - Services/Upload
+        build: Services/Upload
         volumes: 
             - ../songs:/var/songs
         ports: 
             - 3000:3000
     streaming-service:
-        build: 
-            - Services/Streming
+        build: Services/Streming
         volumes: 
             - ../songs:/var/songs
         ports: 
             - 3001:3000
     download-service:
-        build: 
-            - Services/Download
+        build: Services/Download
         volumes: 
             - ../songs:/var/songs
         ports: 
             - 3002:3000
     metadata-service:
-        build: 
-            - Services/Metadata
+        build: Services/Metadata
         ports: 
             - 3004:3000
     users-service:
-        build: 
-            - Services/User
+        build: Services/User
         ports: 
             - 3005:3000
     express-gateway:
-        build: 
-            - Gateway/
+        build: Gateway/
         ports: 
             - 80:8081
