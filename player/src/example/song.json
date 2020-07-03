@@ -14,10 +14,10 @@
 
     {
         "id": 1,
-        "title" : "la puerta naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssegra",
+        "title" : "la puerta naa",
         "number" : "3",
-        "album" : "ok compusssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssster",
-        "artist" : "Los tigrsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssses del norte",
+        "album" : "ok compusssster",
+        "artist" : "Los tiges del norte",
         "genre": "Rock",
         "year": "1999",
         "urlStreaming": "http://localhost:4000/static/Heretics/Heretics.m3u8",
