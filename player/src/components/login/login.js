@@ -42,31 +42,34 @@ class Login extends Component {
     this.formResult(result);
   }
 
-   formResult(result){
+  formResult(result) {
 
-    switch(result.status){
-      case "ok":{
-        console.log("todo chido");
-        this.props.updateLoginStatus("ok");
-        console.log(this.props.user.loginStatus);
-        this.setState({loginSuccess: result.status});
+    if (!result) {
+      alert('no connection')
 
-
-        break;
-      }
-      case "INVALID_PASSWORD":{
-        console.log("contraseña mal");
-        this.setState({loginError: "Contraseña incorrecta"});
-        break;
-      }
-      case "USER_NOT_FOUND":{
-        console.log("usuario no encontrado");
-        this.setState({loginError: "Usuario no encontrado"});
-        break;
+    } else {
+      switch (result.status) {
+        case "ok": {
+          console.log("todo chido");
+          this.props.updateLoginStatus("ok");
+          console.log(this.props.user.loginStatus);
+          this.setState({ loginSuccess: result.status });
+          break;
+        }
+        case "INVALID_PASSWORD": {
+          console.log("contraseña mal");
+          this.setState({ loginError: "Contraseña incorrecta" });
+          break;
+        }
+        case "USER_NOT_FOUND": {
+          console.log("usuario no encontrado");
+          this.setState({ loginError: "Usuario no encontrado" });
+          break;
+        }
       }
     }
   }
-  
+
 
   render() {
     return (

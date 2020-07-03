@@ -11,6 +11,7 @@ import MainHeader from './components/MainHeader/MainHeader';
 import SideMenu from './components/SideMenu/SideMenu';
 import Login from './components/login/login';
 import Register from './components/Register/Register'
+import Upload from './components/Upload/Upload';
 
 class App extends React.Component {
 
@@ -40,11 +41,9 @@ class App extends React.Component {
         <Route path={"/login"} component={Login} exact></Route>
         {/* <Route path="/player" component={Player}></Route> */}
       </Switch>
-
-      <Route path="/register" component={Register} exact>
-      </Route>
+      <Route path="/register" component={Register} exact></Route>
+      <Route path="/upload" component={Upload} exact></Route>
       {this.updateState}
-
     </Router>
     
   );

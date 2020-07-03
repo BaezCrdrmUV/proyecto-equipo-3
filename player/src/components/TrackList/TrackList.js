@@ -14,11 +14,6 @@ import {currentSong} from '../../redux/actions/songs';
           selectedSongs: ""
           
         }
-
-
-        // "react": "^16.13.1",
-        // "react-bootstrap": "^1.0.1",
-        // "react-dom": "^16.13.1",
     }
 
     componentDidMount(){
