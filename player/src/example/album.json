@@ -3,14 +3,28 @@
         "id": 0,
         "name" : "ok computadora",
         "artist" : "bowie",
-        "urlImage": "https://i.imgur.com/s6ru3Ce.jp",
+        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "songs" : [1,2,4]
+    },
+    {
+        "id": 1,
+        "name" : "let's Dance",
+        "artist" : "Post malone",
+        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
+        "songs" : [4,5,10]
     },
     {
         "id": 2,
         "name" : "let's Dance",
         "artist" : "Post malone",
-        "urlImage": "https://i.imgur.com/s6ru3Ce.jp",
+        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
+        "songs" : [4,5,10]
+    },
+    {
+        "id": 3,
+        "name" : "let's Dance",
+        "artist" : "Post malone",
+        "urlImage": "https://i.imgur.com/s6ru3Ce.jpg",
         "songs" : [4,5,10]
     }
 ]

@@ -17,11 +17,18 @@ export class Albums extends Component {
    renderAlbums(){
        const albums = this.props.album.albums;
        return(
-           <div>
+           <div className="row">
                {
                    albums.map(album => {
-                       return <div key={album.id}>
-                           <p>{album.name}</p>
+                       return <div  key={album.id}>
+                            <div className="columnAlbum">
+                                <div className="contentAlbum">
+                                <img src={album.urlImage} alt="AlbumImage" className="image"/>
+                                <h4>{album.name}</h4>
+                                <p>{album.artist}</p>
+                                </div>
+
+                            </div>
                         </div>
                    })
                }
@@ -33,7 +40,8 @@ export class Albums extends Component {
     render() {
         return (
             <div>
-                <p>albums</p>
+                <h1>Albums</h1>
+                <br></br>
                 {this.renderAlbums()}   
             </div>
         )
