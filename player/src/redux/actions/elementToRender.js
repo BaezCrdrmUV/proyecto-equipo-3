@@ -5,6 +5,13 @@ const renderPlaylists = (id) => {
     };
 };
 
+const renderAlbumSongs = (id) => {
+    return {
+        type : 'renderAlbumSongs',
+        payload : id
+    }
+}
+
 const renderAlbumLists = (id) =>{
     return {
         type: 'renderAlbumLists',
@@ -12,4 +19,4 @@ const renderAlbumLists = (id) =>{
     };
 };
 
-export  {renderAlbumLists, renderPlaylists}
+export  {renderAlbumLists, renderPlaylists, renderAlbumSongs}

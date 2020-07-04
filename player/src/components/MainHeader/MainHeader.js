@@ -28,6 +28,14 @@ ToRender(){
                 </div>
             )
         }
+
+        case "renderAlbumSongs" :{
+            return(
+                <div>
+                    <h1>songs</h1>
+                </div>
+            )
+        }
         default:
             return null;
     }

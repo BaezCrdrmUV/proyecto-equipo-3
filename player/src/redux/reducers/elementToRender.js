@@ -20,6 +20,14 @@ function reducer(state = defaultState, {type, payload}){
             }
         }
 
+        case 'renderAlbumSongs':{
+            return {
+                ...state,
+                toRender: state.toRender = "renderAlbumSongs",
+                id: state.id = payload
+            }
+        }
+
         default:
             return state;
     }
