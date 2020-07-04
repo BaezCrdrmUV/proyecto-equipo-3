@@ -19,4 +19,10 @@ const renderAlbumLists = (id) =>{
     };
 };
 
-export  {renderAlbumLists, renderPlaylists, renderAlbumSongs}
+const renderGenres = () => {
+    return{
+        type: 'renderGenres'
+    }
+}
+
+export  {renderAlbumLists, renderPlaylists, renderAlbumSongs, renderGenres}

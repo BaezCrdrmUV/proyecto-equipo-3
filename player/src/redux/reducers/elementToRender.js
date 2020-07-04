@@ -28,6 +28,13 @@ function reducer(state = defaultState, {type, payload}){
             }
         }
 
+        case 'renderGenres' : {
+            return {
+                ...state,
+                toRender: state.toRender = "renderGenres"
+            }
+        }
+
         default:
             return state;
     }

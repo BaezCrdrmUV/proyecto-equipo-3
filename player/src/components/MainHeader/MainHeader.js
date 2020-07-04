@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import './MainHeader.css'
+import React, { Component } from 'react';
+import './MainHeader.css';
 import TrackList from '../TrackList/TrackList';
-import Albums from '../Albums/Albums'
-import AlbumTrackList from '../AlbumTrackList/AlbumTrackList'
+import Albums from '../Albums/Albums';
+import AlbumTrackList from '../AlbumTrackList/AlbumTrackList';
+import Genres from '../Genres/Genres';
 import {connect} from 'react-redux';
 
 
@@ -37,6 +38,17 @@ ToRender(){
                 </div>
             )
         }
+
+        case "renderGenres" : {
+            return(
+                <div>
+                    <Genres></Genres>
+                </div>
+            )
+        }
+
+        
+
         default:
             return null;
     }

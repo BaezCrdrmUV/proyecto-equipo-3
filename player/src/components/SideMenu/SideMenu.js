@@ -16,11 +16,11 @@ import './SideMenu.css'
                     <h1>Ougi Music</h1>
                     <ul className="side-menu-container">
                         <li className={"side-menu-item"}>Home</li>
-                        <li className="side-menu-item">Genres</li>
+                        <li className="side-menu-item"  >Genres</li>
                         <br></br>
                         <h2 className="user-library-header" >Your Library</h2>
                         <li className="side-menu-item"  onClick={() => {
-                                    this.props.renderAlbumLists(1) }} >Albums</li>
+                                    this.props.renderAlbumLists() }} >Albums</li>
                         <li className="side-menu-item">Artists</li>
                         <li className="side-menu-item">songs</li>
 
