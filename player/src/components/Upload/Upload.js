@@ -25,6 +25,7 @@ export class Upload extends Component {
     this.handleChangeAlbumName = this.handleChangeAlbumName.bind(this);
     this.handleChangeSongGenre = this.handleChangeSongGenre.bind(this);
     this.handleChangeSongTitle = this.handleChangeSongTitle.bind(this);
+    this.handleChangeMP3 = this.handleChangeMP3.bind(this);
   }
 
   handleChangeAlbumName(e){
@@ -47,12 +48,16 @@ export class Upload extends Component {
     this.setState({songGenre: e.target.value});
   }
 
+  handleChangeMP3(e){
+    this.setState({songMP3: e.target.value});
+  }
+
 
 
   sumbitAlbum(e) {
     e.preventDefault(e);
     console.log("sumbit album");
-    
+    console.log(this.state.albumSongs);
   }
 
   addSongToAlbum(e) {
@@ -60,11 +65,11 @@ export class Upload extends Component {
     const song ={
         "title": this.state.songTitle,
         "genre": this.state.songGenre,
-        "number": this.state.albumSongs.length + 1
+        "number": this.state.albumSongs.length + 1,
+        "mp3": this.state.songMP3
     }
     const listSongs = this.state.albumSongs;
     this.setState({albumSongs: listSongs.concat([song]) });
-    console.log(this.state.albumSongs);
     this.clearInputs();
   }
 
@@ -72,7 +77,9 @@ export class Upload extends Component {
       this.setState({
           songTitle: "",
           songGenre: "",
+          songMP3: ""
       });
+
   }
 
   renderTable() {
@@ -146,9 +153,9 @@ export class Upload extends Component {
                 <Form.Control
                   type="songTitle"
                   placeholder="Enter the song title"
-                  required
                   value={this.state.songTitle}
                   onChange={this.handleChangeSongTitle}
+                  required
                 />
               </Form.Group>
 
@@ -163,7 +170,7 @@ export class Upload extends Component {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.File id="song" label="Select song in mp3" required />
+                <Form.File id="song" label="Select song in mp3" value={this.state.songMP3}  onChange={this.handleChangeMP3} required />
               </Form.Group>
 
               <Button variant="outline-primary" onClick={this.addSongToAlbum}>
@@ -184,7 +191,7 @@ export class Upload extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.File id="Imagen" label="Select image" accept="image/*" required/>
+            <Form.File id="Imagen" label="Select image"  required/>
           </Form.Group>
 
           <Button variant="primary" type="submit" onSubmit={this.sumbitAlbum}>

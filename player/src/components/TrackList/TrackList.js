@@ -42,13 +42,13 @@ class TrackList extends Component {
   }
 
 
-  renderSongOptions(){
+  renderSongOptions(songID){
     const playlists = this.props.playlists.playlists;
     return (     
         <div>
             {
                 playlists.map(playlist => {
-                    return <Dropdown.Item key={playlist.id}>
+                    return <Dropdown.Item key={playlist.id} onClick={() => console.log(songID, playlist.id)} >
                         {playlist.name}
                       </Dropdown.Item>   
                 })
@@ -79,9 +79,9 @@ class TrackList extends Component {
                 <p>{song.album}</p>
               </div>
 
-              <div className="song-length">
+              {/* <div className="song-length">
                 <p>{song.duration}</p>
-              </div>
+              </div> */}
 
               <div className="optionButton">
                 <Dropdown>
@@ -93,7 +93,7 @@ class TrackList extends Component {
                   <Dropdown.Item>Add to Queue</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Header>Add to playlist:</Dropdown.Header>
-                    {this.renderSongOptions()}
+                    {this.renderSongOptions(song.id)}
                   </Dropdown.Menu>
 
                 </Dropdown>
@@ -119,9 +119,9 @@ class TrackList extends Component {
           <div className="song-album-header">
             <p>Album</p>
           </div>
-          <div className="song-length-header">
+          {/* <div className="song-length-header">
             <p>Duration</p>
-          </div>
+          </div> */}
         </div>
 
         {this.renderSongs()}
