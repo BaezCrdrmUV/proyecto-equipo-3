@@ -18,8 +18,7 @@ function reducer(state = defaultState, {type, payload}){
         case 'getSelectedPlaylist':{
             return{
                 ...state,
-                selectedPlaylist: state.selectedPlaylist = Userplaylists[payload]
-
+                selectedPlaylist: state.selectedPlaylist = state.playlists[payload]
             }
         }
 

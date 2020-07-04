@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './MainHeader.css'
 import TrackList from '../TrackList/TrackList';
+import Albums from '../Albums/Albums'
 import {connect} from 'react-redux';
 
 
@@ -23,7 +24,7 @@ ToRender(){
         case "renderAlbumLists" :{
             return (
                 <div>
-                    <p>albums</p>
+                    <Albums></Albums>
                 </div>
             )
         }
