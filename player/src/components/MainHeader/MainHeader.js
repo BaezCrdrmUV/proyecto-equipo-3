@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './MainHeader.css'
 import TrackList from '../TrackList/TrackList';
 import Albums from '../Albums/Albums'
+import AlbumTrackList from '../AlbumTrackList/AlbumTrackList'
 import {connect} from 'react-redux';
 
 
@@ -32,7 +33,7 @@ ToRender(){
         case "renderAlbumSongs" :{
             return(
                 <div>
-                    <h1>songs</h1>
+                    <AlbumTrackList></AlbumTrackList>
                 </div>
             )
         }

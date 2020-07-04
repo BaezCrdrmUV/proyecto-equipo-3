@@ -1,6 +1,6 @@
 .header {
     position: fixed;
-    width: 900px;
+    width: 80%;
     z-index: 1100;
       display: flex;
       justify-content: space-between;
