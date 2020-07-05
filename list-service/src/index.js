@@ -11,10 +11,11 @@ app.use(express.json());
 
 app.use(routes);
 
-const PORT = process.env.POR || 4000;
+const PORT = process.env.PORT || 4000;
 
 
 
+mongoose.set('useFindAndModify', false);
 mongoose
   .connect(process.env.MONGO, {
     useNewUrlParser: true,
@@ -23,7 +24,7 @@ mongoose
   .then(() => {
       console.log("conexión creada");
       app.listen(PORT, function(){
-        console.log("server running");
+        console.log("server running on: "+ PORT);
     });
 
   }).catch(Error => {

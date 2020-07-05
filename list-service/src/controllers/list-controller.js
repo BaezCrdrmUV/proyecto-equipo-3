@@ -3,8 +3,8 @@ const List = require('../mongo/models/list.js');
 const createList = async (req, res) =>{
     try {
         const { user, name } = req.body;
-        if (List.exists({ user: user, name: name })) {
-            res.status(409).send({ status: '', message: 'La lista de reproduccion ya existe' });
+        if (await List.exists({ user: user, name: name })) {
+            res.status(409).send({ status: 'Error', message: 'La lista de reproduccion ya existe' });
         } else {
             await List.create({
                 user,
@@ -27,18 +27,14 @@ const createList = async (req, res) =>{
 const addSongList = async (req, res) =>{
     try {
         const { listId, songs } = req.body;
-        if (List.findById(listId) == null){
-            res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
-        }else{
-            List.findOneAndUpdate({_id: listId},
-                {$push: {songs: songs}, function (error, response) {
-                    if (error){
-                        res.status(403).send({ status: 'ERROR', message: 'Error al agregar las canciones' });
-                    }else{
-                        res.status(200).send({ status: 'ok', message: 'Canciones agregadas' });
-                    }
-                }});
-        }
+        await List.findOneAndUpdate({_id: listId},
+            {$push: {songs: songs}}, function (error, response) {
+                if (error){
+                    res.status(403).send({ status: 'ERROR', message: 'Error al agregar las canciones' });
+                }else{
+                    res.status(200).send({ status: 'ok', message: 'Canciones agregadas' });
+                }
+            });
     } catch (error) {
         res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
     }
@@ -47,10 +43,10 @@ const addSongList = async (req, res) =>{
 const removeSongList = async (req, res) =>{
     try {
         const { listId, songs } = req.body;
-        if (List.findById(listId) == null){
+        if (await List.findById(listId) == null){
             res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
         }else{
-            List.findOneAndUpdate({_id: listId},
+            await List.findOneAndUpdate({_id: listId},
                 {$pull: {songs: songs}, function (error, response) {
                     if (error){
                         res.status(403).send({ status: 'ERROR', message: 'Error al quitar las canciones' });
@@ -67,7 +63,7 @@ const removeSongList = async (req, res) =>{
 const deleteList = async (req, res) =>{
     try {
         const { listId } = req.body;
-        List.findByIdAndDelete({_id: listId}, function(error, response) {
+        await List.findByIdAndDelete({_id: listId}, function(error, response) {
             if (error){
                 res.status(505).send({ status: 'ERROR', message: 'Lista no eliminada' });
             }else{
