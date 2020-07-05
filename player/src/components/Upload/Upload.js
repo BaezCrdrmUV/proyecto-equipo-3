@@ -292,8 +292,11 @@ export class Upload extends Component {
           <Form.Group controlId="formYear">
             <Form.Label>Year</Form.Label>
             <Form.Control
-              type="year"
+              type="number"
               placeholder="Enter the year"
+              value={this.state.albumYear}
+              onChange={this.handleAlbumYear}
+              min="0"
               required
             />
           </Form.Group>
