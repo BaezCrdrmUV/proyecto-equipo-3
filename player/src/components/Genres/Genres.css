@@ -1,0 +1,41 @@
+.columnGenre{
+    float: left;
+    width: 33.33%;
+    cursor: pointer;
+
+
+}
+.contentGenre:hover {
+    background-color: gray;
+  }
+
+
+.image{
+    width:170px;
+}
+
+.contentGenre{
+    padding: 10px;
+    width: 190px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.row {
+    margin: 8px -16px;
+    width: 100%;
+  }
+
+  .row,
+.row > .column {
+  padding: 8px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
