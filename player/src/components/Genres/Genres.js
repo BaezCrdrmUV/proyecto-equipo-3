@@ -29,7 +29,7 @@ export class Albums extends Component {
                                         () => this.getGenreSongs(genre.id)
                                     } >
                                 <div className="contentGenre">
-                                <img src={genre.urlImage} alt="genreImage" className="image"/>
+                                <img src={require(`../../example/images/${genre.image}` )} alt="genreImage" className="image"/>
                                 <h4>{genre.name}</h4>
                                 </div>
                             </div>

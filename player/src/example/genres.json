@@ -2,51 +2,46 @@
     {
         "id": 0,
         "name": "Hip-Hop",
-        "image": ""
+        "image": "hip-hop.png"
     },
     {
         "id": 1,
         "name": "Pop",
-        "image": ""
+        "image": "pop.png"
     },
     {
         "id": 2,
         "name": "Rock",
-        "image": ""
+        "image": "rock.png"
     },
     {
         "id": 4,
         "name": "Latin",
-        "image": ""
+        "image": "latin.png"
     },
     {
         "id": 5,
-        "name": "Dance/Electronic",
-        "image": ""
+        "name": "Electronic",
+        "image": "electronic.png"
     },
     {
         "id": 6,
         "name": "Indie",
-        "image": ""
+        "image": "indie.png"
     },
     {
         "id": 7,
         "name": "Classical",
-        "image": ""
+        "image": "classical.png"
     },
     {
         "id": 8,
         "name": "Metal",
-        "image": ""
+        "image": "metal.png"
     },
     {
         "id": 9,
         "name": "Blues",
-        "image": ""
-    },
-    {
-        "id": 10,
-        "name": "Other",
-        "image": ""
+        "image": "blues.png"
     }
 ]
