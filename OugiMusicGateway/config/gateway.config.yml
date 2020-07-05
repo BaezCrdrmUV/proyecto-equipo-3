@@ -2,7 +2,7 @@ http:
   port: 8081
 admin:
   port: 9876
-  hostname: localhost
+  host: localhost
 apiEndpoints:
   upload:
     paths:
@@ -31,7 +31,7 @@ apiEndpoints:
       - '/playlist/RemoveSong'
       - '/playlist/Deletelist'
       - '/playlist/GetPlaylist'
-      
+
   # This has to be last always
   streaming:
     paths: '*'
