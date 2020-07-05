@@ -1,6 +1,7 @@
 const defaultState = {
     toRender : "",
-    id : null
+    id : null,
+    genre : ""
 }
 
 
@@ -35,9 +36,11 @@ function reducer(state = defaultState, {type, payload}){
             }
         }
 
-        case 'renderGenderSongs':{
+        case 'renderGenreSongs':{
             return{
-                ...state
+                ...state,
+                toRender: state.toRender = "renderGenreSongs",
+                genre: state.genre = payload
             }
 
         }

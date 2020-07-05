@@ -22,6 +22,7 @@ const renderAlbumLists = (id) =>{
 const renderGenres = () => {
     return{
         type: 'renderGenres'
+
     }
 }
 
