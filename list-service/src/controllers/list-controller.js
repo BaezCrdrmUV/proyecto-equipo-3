@@ -94,4 +94,19 @@ const getLists = async (req, res) =>{
     }
 };
 
-module.exports = {createList, addSongList, removeSongList, deleteList, getLists};
+const getMyPlaylists = async (req, res) =>{
+    try {
+        const { user } = req.body;
+        const list = await List.find({ user: user});
+        if (list == null){
+            res.status(404).send({ status: 'ERROR', message: 'No se encuentran listas' });
+        }else{
+            res.send({ status: 'ok', data: list });
+        }
+
+    } catch (error) {
+        res.status(404).send({ status: 'ERROR', message: 'No se pudieron obtener las listas' });
+    }
+};
+
+module.exports = {createList, addSongList, removeSongList, deleteList, getLists, getMyPlaylists};
