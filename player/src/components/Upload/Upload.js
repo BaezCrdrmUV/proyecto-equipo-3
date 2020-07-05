@@ -63,8 +63,29 @@ export class Upload extends Component {
   }
 
 
+
+  uploadAlbum(){
+    const album = {
+      "name" : this.state.albumName,
+      "artist" : this.state.albumArtist,
+      "year" : this.state.albumYear,
+      "urlImage" : this.createImagePath()
+    }
+  }
+
+
   uploadMetadata(){
 
+    const songs = this.state.albumSongs;
+
+    const albumSongs = {
+      "name" : this.state.albumName,
+      "artist" : this.state.albumArtist,
+      "year" : this.state.albumYear,
+      "songList": songs
+    }
+
+    console.log(albumSongs);
   }
 
   uploadSongs(){
@@ -75,39 +96,6 @@ export class Upload extends Component {
 
   }
 
-  uploadAlbum(){
-    const album = {
-      "name" : this.state.albumName,
-      "artist" : this.state.albumArtist,
-      "year" : this.state.albumYear
-    }
-
-
-    console.log(album);
-  }
-
-
-  prepareSongs(){
-
-    const songs = this.state.albumSongs;
-
-    console.log(songs);
-    songs.forEach(song => {
-      song["artist"] = this.state.albumArtist;
-      song["album"] = this.state.albumName;
-      song["albumID"] = this.state.albumID;
-      song["year"] = this.state.albumYear;
-      console.log(song);  
-    });
-  }
-
-  creatAlbumPath(){
-
-  }
-
-  createImagePath(){
-
-  }
 
   sumbitAlbum(e) {
     e.preventDefault(e);
@@ -134,6 +122,30 @@ export class Upload extends Component {
 
     }
   }
+
+  prepareSongs(){
+
+    const songs = this.state.albumSongs;
+
+    console.log(songs);
+    songs.forEach(song => {
+      song["urlStreaming"] = this.createAlbumPath(song.title);
+      song["urlImage"] = this.createImagePath(this.state.albumName);
+      console.log(song);  
+    });
+  }
+
+  createAlbumPath(name){
+    var path = "localhost:8081/"+ name+"/" + name+".m3u8";
+    return path;
+  }
+
+  createImagePath(name){
+    var path = "localhost:8081/"+ name+"/"+ name+".jpg";
+    return path;
+  }
+
+
 
   checkSongList(){
     if(this.state.albumSongs.length <= 0){
