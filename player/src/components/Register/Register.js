@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { createUser } from '../../redux/actions/user';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect,  } from "react-router-dom";
+import { Link, Redirect,  } from "react-router-dom";
 
 
 

@@ -14,3 +14,7 @@
     margin: 0 auto;
     background-color: rgb(red, green, blue);
 }
+
+.button-back{
+    margin-left: 30px;
+}

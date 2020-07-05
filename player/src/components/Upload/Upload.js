@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import "./Upload.css";
+import { Link  } from "react-router-dom";
+
 
 export class Upload extends Component {
   constructor(props) {
@@ -305,9 +307,18 @@ export class Upload extends Component {
             <Form.File id="Imagen" label="Select image" value={this.state.albumImage} onChange={this.handleChangeAlbumImage} required/>
           </Form.Group>
 
+          <br></br>
+
+
           <Button variant="primary" type="submit" onSubmit={this.sumbitAlbum}>
             Save Album
           </Button>
+
+          <Link to="/">
+              <Button className="button-back" variant="link" type="button" >
+                Back
+              </Button>
+          </Link>
         </Form>
 
         <br></br>
