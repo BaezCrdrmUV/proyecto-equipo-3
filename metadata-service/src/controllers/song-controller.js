@@ -6,7 +6,7 @@ const createSong = async (req, res) => {
 
     try {
         const { title, number, album, artist, genre, year, urlStreaming, urlImage } = req.body;
-        if (Songs.exists({ title: title })) {
+        if (await Songs.exists({ title: title })) {
             res.status(409).send({ status: 'Existente', message: 'La cancion ingresada ya existe' });
         } else {
             await Songs.create({
@@ -52,7 +52,7 @@ const getSong = async (req, res) => {
 const createArtist = async (req, res) => {
     try {
         const { artist, description, genre, debutyear, urlImage } = req.body;
-        if (Artist.exists({ artist: artist })) {
+        if (await Artist.exists({ artist: artist })) {
             res.status(409).send({ status: 'Existente', message: 'El artista ingresado ya existe' });
         } else {
             await Artist.create({
