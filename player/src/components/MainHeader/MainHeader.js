@@ -3,6 +3,7 @@ import './MainHeader.css';
 import TrackList from '../TrackList/TrackList';
 import Albums from '../Albums/Albums';
 import AlbumTrackList from '../AlbumTrackList/AlbumTrackList';
+import GenreSongs from '../GenreSongs/GenreSongs'
 import Genres from '../Genres/Genres';
 import {connect} from 'react-redux';
 
@@ -43,6 +44,14 @@ ToRender(){
             return(
                 <div>
                     <Genres></Genres>
+                </div>
+            )
+        }
+
+        case "renderGenreSongs" : {
+            return (
+                <div>
+                   <GenreSongs></GenreSongs>
                 </div>
             )
         }

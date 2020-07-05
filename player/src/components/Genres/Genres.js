@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {} from '../../redux/actions/elementToRender'
+import {renderGenreSongs} from '../../redux/actions/elementToRender'
 import genreList from '../../example/genres.json'
 
 
@@ -8,15 +8,6 @@ import genreList from '../../example/genres.json'
 import './Genres.css';
 
 export class Albums extends Component {
-
-
- 
-
-   getGenreSongs(id){
-
-   }
-
-
    renderGenres(){
        const genres = genreList;
        return(
@@ -26,7 +17,7 @@ export class Albums extends Component {
                        return <div  key={genre.id}>
                             <div className="columnGenre" 
                                     onClick={
-                                        () => this.getGenreSongs(genre.id)
+                                        () => this.props.renderGenreSongs(genre.name)
                                     } >
                                 <div className="contentGenre">
                                 <img src={require(`../../example/images/${genre.image}` )} alt="genreImage" className="image"/>
@@ -57,7 +48,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
+    renderGenreSongs
 
 }
 
