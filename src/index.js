@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 global.songDir = path.resolve('../songs');
+global.songDir = path.resolve('../images');
 
 const PORT = 3000;
 
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
   res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');	
   next();	
 });
+app.use(express.static(songDir));
 app.use(express.static(songDir));
 
 
