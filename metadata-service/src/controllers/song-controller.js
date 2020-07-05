@@ -6,7 +6,7 @@ const createSong = async (req, res) => {
 
     try {
         const { title, number, album, artist, genre, year, urlStreaming, urlImage } = req.body;
-        if (await Songs.exists({ title: title })) {
+        if (await Songs.exists({ title: title, artist: artist, year: year })) {
             res.status(409).send({ status: 'Existente', message: 'La cancion ingresada ya existe' });
         } else {
             await Songs.create({
@@ -29,6 +29,41 @@ const createSong = async (req, res) => {
             console.log(ERROR);
 
             res.status(505).send({ status: 'ERROR', message: 'Cancion no creada' });
+        }
+    }
+}
+const createSongs = async (req, res) => {
+
+    try {
+        const { album, artist, genre, year, songList } = req.body;
+        songList.forEach( async (songMeta) => {
+            let title = songMeta.title;
+            let number = songMeta.number;
+            let urlImage = songMeta.urlImage;
+            let urlStreaming = songMeta.urlStreaming;
+            if (await Songs.exists({ title: title, artist: artist, year: year })) {
+                console.log('Already existing song');
+            } else {
+                await Songs.create({
+                    title,
+                    number,
+                    album,
+                    artist,
+                    genre,
+                    year,
+                    urlStreaming,
+                    urlImage
+                })
+            }
+        });
+        res.send({ status: 'ok', message: 'Canciónes creadas' });
+    } catch (ERROR) {
+        if (ERROR.name == 'ValidationError') {
+            res.status(400).send({ status: 'ERROR', message: 'Valores ingresados invalidos' });
+        } else {
+            console.log(ERROR);
+
+            res.status(505).send({ status: 'ERROR', message: 'Error al agregar las canciones' });
         }
     }
 }
@@ -138,4 +173,4 @@ const getAlbum = async (req, res) => {
 
 
 
-module.exports = { createSong, getSong, createArtist, getArtist, createAlbum, getAlbum };
+module.exports = { createSong, createSongs, getSong, createArtist, getArtist, createAlbum, getAlbum };
