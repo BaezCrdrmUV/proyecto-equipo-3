@@ -13,6 +13,7 @@ apiEndpoints:
   metadata:
     paths:
       - '/songs/createSong'
+      - '/songs/createSongs'
       - '/songs/getSong'
       - '/songs/createArtist'
       - '/songs/getArtist'
@@ -23,8 +24,14 @@ apiEndpoints:
       - '/login'
       - '/create'
       - '/tokenAuthorization'
-
-
+  list:
+    paths:
+      - '/playlist/CreatePlaylist'
+      - '/playlist/AddSong'
+      - '/playlist/RemoveSong'
+      - '/playlist/Deletelist'
+      - '/playlist/GetPlaylist'
+      
   # This has to be last always
   streaming:
     paths: '*'
@@ -37,15 +44,13 @@ serviceEndpoints:
   downloadService:
     url: 'http://download-service:3002'
   listService:
-    url: 'http://localhost:3003'
+    url: 'http://list-Service:3003'
   metadataService:
     url: 'http://metadata-service:3004'
   usersService:
     url: 'http://users-service:3005'
   libraryService:
     url: 'http://localhost:3006'
-  imageService:
-    url: 'http://localhost:3007'
 policies:
   - cors
   - expression
@@ -76,6 +81,14 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: downloadService
+              changeOrigin: true
+  list:
+    apiEndpoints:
+      - list
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: listService
               changeOrigin: true
   metadata:
     apiEndpoints:
