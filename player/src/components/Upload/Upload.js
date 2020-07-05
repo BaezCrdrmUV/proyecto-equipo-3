@@ -29,6 +29,7 @@ export class Upload extends Component {
     this.handleChangeSongGenre = this.handleChangeSongGenre.bind(this);
     this.handleChangeSongTitle = this.handleChangeSongTitle.bind(this);
     this.handleChangeMP3 = this.handleChangeMP3.bind(this);
+    this.handleChangeAlbumImage = this.handleChangeAlbumImage.bind(this);
   }
 
   handleChangeAlbumName(e){
@@ -53,6 +54,10 @@ export class Upload extends Component {
 
   handleChangeMP3(e){
     this.setState({songMP3: e.target.value});
+  }
+
+  handleChangeAlbumImage(e){
+    this.setState({albumImage: e.target.value})
   }
 
 
@@ -104,9 +109,11 @@ export class Upload extends Component {
 
   sumbitAlbum(e) {
     e.preventDefault(e);
-    console.log("sumbit album");
-    console.log(this.state.albumSongs);
-    this.prepareSongs();
+    if(this.checkImageFile() && this.checkSongList()){
+      console.log("sumbit album");
+      console.log(this.state.albumSongs);
+      this.prepareSongs();
+    }
   }
 
   addSongToAlbum(e) {
@@ -124,6 +131,13 @@ export class Upload extends Component {
       console.log("hola");
 
     }
+  }
+
+  checkSongList(){
+    if(this.state.albumSongs){
+      return true; 
+    }
+    return false;
   }
 
   checkSongInputs(){
@@ -153,6 +167,14 @@ export class Upload extends Component {
     if(!this.state.songMP3.match(/.(mp3)$/i)){
       alert("not a mp3 file");
       return false
+    }
+    return true;
+  }
+
+  checkImageFile(){
+    if(!this.state.albumImage.match(/.(jpg|jpeg|png)$/i)){
+      alert("not a image");
+      return false;
     }
     return true;
   }
@@ -275,7 +297,7 @@ export class Upload extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.File id="Imagen" label="Select image"  required/>
+            <Form.File id="Imagen" label="Select image" value={this.state.albumImage} onChange={this.handleChangeAlbumImage} required/>
           </Form.Group>
 
           <Button variant="primary" type="submit" onSubmit={this.sumbitAlbum}>
