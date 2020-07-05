@@ -65,12 +65,16 @@ export class Upload extends Component {
 
 
   uploadAlbum(){
+
     const album = {
       "name" : this.state.albumName,
       "artist" : this.state.albumArtist,
       "year" : this.state.albumYear,
       "urlImage" : this.createImagePath()
     }
+
+    this.setState({ albumID: "awa" });
+
   }
 
 
@@ -79,7 +83,7 @@ export class Upload extends Component {
     const songs = this.state.albumSongs;
 
     const albumSongs = {
-      "name" : this.state.albumName,
+      "album" : this.state.albumName,
       "artist" : this.state.albumArtist,
       "year" : this.state.albumYear,
       "songList": songs
@@ -87,6 +91,7 @@ export class Upload extends Component {
 
     console.log(albumSongs);
   }
+  
 
   uploadSongs(){
 
@@ -100,9 +105,9 @@ export class Upload extends Component {
   sumbitAlbum(e) {
     e.preventDefault(e);
     if(this.checkImageFile() && this.checkSongList()){
-      console.log("sumbit album");
-      console.log(this.state.albumSongs);
+      this.uploadAlbum();
       this.prepareSongs();
+      this.uploadMetadata();
     }
   }
 
@@ -127,12 +132,13 @@ export class Upload extends Component {
 
     const songs = this.state.albumSongs;
 
-    console.log(songs);
     songs.forEach(song => {
       song["urlStreaming"] = this.createAlbumPath(song.title);
       song["urlImage"] = this.createImagePath(this.state.albumName);
-      console.log(song);  
+      song["albumID"] = this.state.albumID;
     });
+
+    this.setState({ albumSongs: songs });
   }
 
   createAlbumPath(name){
