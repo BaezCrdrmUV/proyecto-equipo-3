@@ -34,11 +34,12 @@ const createSong = async (req, res) => {
 const createSongs = async (req, res) => {
 
     try {
-        const { album, artist, genre, year, songList } = req.body;
+        const { album, artist, year, songList } = req.body;
         songList.forEach( async (songMeta) => {
             let title = songMeta.title;
             let number = songMeta.number;
             let urlStreaming = songMeta.urlStreaming;
+            let genre = songMeta.genre;
             if (await Songs.exists({ title: title, artist: artist, year: year })) {
                 console.log('Already existing song');
             } else {
