@@ -16,6 +16,9 @@ export class Upload extends Component {
       albumImage:"",
       albumSongs: [],
 
+      albumID: "",
+      imageUrl : ""
+
     };
 
     this.sumbitAlbum = this.sumbitAlbum.bind(this);
@@ -53,24 +56,105 @@ export class Upload extends Component {
   }
 
 
+  uploadMetadata(){
+
+  }
+
+  uploadSongs(){
+
+  }
+
+  uploadImage(){
+
+  }
+
+  uploadAlbum(){
+    const album = {
+      "name" : this.state.albumName,
+      "artist" : this.state.albumArtist,
+      "year" : this.state.albumYear
+    }
+
+
+    console.log(album);
+  }
+
+
+  prepareSongs(){
+
+    const songs = this.state.albumSongs;
+
+    console.log(songs);
+    songs.forEach(song => {
+      song["artist"] = this.state.albumArtist;
+      song["album"] = this.state.albumName;
+      song["albumID"] = this.state.albumID;
+      song["year"] = this.state.albumYear;
+      console.log(song);  
+    });
+  }
+
+  creatAlbumPath(){
+
+  }
+
+  createImagePath(){
+
+  }
 
   sumbitAlbum(e) {
     e.preventDefault(e);
     console.log("sumbit album");
     console.log(this.state.albumSongs);
+    this.prepareSongs();
   }
 
   addSongToAlbum(e) {
     e.preventDefault();
-    const song ={
+    if (this.checkSongInputs() && this.checkSongFile()) {
+      const song = {
         "title": this.state.songTitle,
         "genre": this.state.songGenre,
         "number": this.state.albumSongs.length + 1,
         "mp3": this.state.songMP3
+      }
+      const listSongs = this.state.albumSongs;
+      this.setState({ albumSongs: listSongs.concat([song]) });
+      this.clearInputs();
+      console.log("hola");
+
     }
-    const listSongs = this.state.albumSongs;
-    this.setState({albumSongs: listSongs.concat([song]) });
-    this.clearInputs();
+  }
+
+  checkSongInputs(){
+
+    var result = true;
+    if(!this.state.songTitle ){
+      alert("empty name")
+      result = false;
+    } 
+    else if (!this.state.songGenre){
+
+      alert("empty genre")
+      result = false;
+
+    }  
+    else if (!this.state.songMP3){
+      
+      alert("empty song")
+      result = false;
+
+    }
+    return result;
+  }
+
+  checkSongFile(){
+
+    if(!this.state.songMP3.match(/.(mp3)$/i)){
+      alert("not a mp3 file");
+      return false
+    }
+    return true;
   }
 
   clearInputs(){
