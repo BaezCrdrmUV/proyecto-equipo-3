@@ -96,7 +96,7 @@ const createAlbum = async (req, res) => {
 
     try {
         const { albumname, artist, releaseyear, urlImage } = req.body;
-        if (Album.exists({ albumname: albumname })) {
+        if (await Album.exists({ albumname: albumname })) {
             res.status(409).send({ status: 'Existente', message: 'El album ingresado ya existe' });
         } else {
             await Album.create({
@@ -105,7 +105,7 @@ const createAlbum = async (req, res) => {
                 releaseyear,
                 urlImage
             })
-            res.send({ status: 'ok', message: 'Album creado' });
+            res.send({ status: 'ok', message: 'Album creado', album: (await Album.findOne({albumname: albumname}))._id });
         }
 
     } catch (ERROR) {
