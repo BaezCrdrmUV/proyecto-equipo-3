@@ -25,4 +25,12 @@ const renderGenres = () => {
     }
 }
 
-export  {renderAlbumLists, renderPlaylists, renderAlbumSongs, renderGenres}
+
+const renderGenreSongs = (genre) => {
+    return {
+        type: 'renderGenreSongs',
+        payload: genre 
+    }
+}
+
+export  {renderAlbumLists, renderPlaylists, renderAlbumSongs, renderGenres, renderGenreSongs}

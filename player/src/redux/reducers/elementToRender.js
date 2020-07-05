@@ -35,6 +35,13 @@ function reducer(state = defaultState, {type, payload}){
             }
         }
 
+        case 'renderGenderSongs':{
+            return{
+                ...state
+            }
+
+        }
+
         default:
             return state;
     }
