@@ -88,6 +88,35 @@ const getSong = async (req, res) => {
     }
 }
 
+const getSongByName = async (req, res) => {
+    try {
+        const { name } = req.body;
+        const song = await Songs.find(name);
+        if (song == null){
+            res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: song });
+        }
+
+    } catch (error) {
+        res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+    }
+}
+
+const getSongByGenre = async (req, res) => {
+    try {
+        const { genre } = req.body;
+        const song = await Songs.find({genre: genre});
+        if (song == null){
+            res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: song });
+        }
+
+    } catch (error) {
+        res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+    }
+}
 
 const createArtist = async (req, res) => {
     try {
@@ -178,4 +207,4 @@ const getAlbum = async (req, res) => {
 
 
 
-module.exports = { createSong, createSongs, getSong, createArtist, getArtist, createAlbum, getAlbum };
+module.exports = { createSong, createSongs, getSong, getSongByGenre, getSongByName, createArtist, getArtist, createAlbum, getAlbum };
