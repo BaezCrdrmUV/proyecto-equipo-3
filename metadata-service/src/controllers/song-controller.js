@@ -5,7 +5,7 @@ const Album = require('../mongo/models/album.js')
 const createSong = async (req, res) => {
 
     try {
-        const { title, number, album, artist, genre, year, urlStreaming, urlImage } = req.body;
+        const { title, number, album, albumId, artist, artistId, genre, year, urlStreaming, urlImage } = req.body;
         if (await Songs.exists({ title: title, artist: artist, year: year })) {
             res.status(409).send({ status: 'Existente', message: 'La cancion ingresada ya existe' });
         } else {
@@ -13,7 +13,9 @@ const createSong = async (req, res) => {
                 title,
                 number,
                 album,
+                albumId,
                 artist,
+                artistId,
                 genre,
                 year,
                 urlStreaming,
@@ -35,7 +37,7 @@ const createSong = async (req, res) => {
 const createSongs = async (req, res) => {
 
     try {
-        const { album, artist, year, songList } = req.body;
+        const { album, albumId, artist, artistId, year, songList } = req.body;
         songList.forEach( async (songMeta) => {
             let title = songMeta.title;
             let number = songMeta.number;
@@ -49,7 +51,9 @@ const createSongs = async (req, res) => {
                     title,
                     number,
                     album,
+                    albumId,
                     artist,
+                    artistId,
                     genre,
                     year,
                     urlStreaming,
