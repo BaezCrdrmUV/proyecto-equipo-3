@@ -19,6 +19,10 @@ services:
             - ../songs:/var/songs
         ports: 
             - 3002:3000
+    list-service:
+        build: Services/List
+        ports: 
+            - 3003:3000
     metadata-service:
         build: Services/Metadata
         ports: 
