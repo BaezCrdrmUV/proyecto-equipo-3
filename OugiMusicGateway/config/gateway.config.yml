@@ -46,7 +46,7 @@ serviceEndpoints:
   listService:
     url: 'http://list-service:3003'
   metadataService:
-    url: 'http://metadata-ervice:3004'
+    url: 'http://metadata-service:3004'
   usersService:
     url: 'http://users-service:3005'
   libraryService:
