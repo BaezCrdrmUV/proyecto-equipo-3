@@ -1,0 +1,52 @@
+[
+    {
+        "id": 0,
+        "name": "Hip-Hop",
+        "image": ""
+    },
+    {
+        "id": 1,
+        "name": "Pop",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "name": "Rock",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name": "Latin",
+        "image": ""
+    },
+    {
+        "id": 5,
+        "name": "Dance/Electronic",
+        "image": ""
+    },
+    {
+        "id": 6,
+        "name": "Indie",
+        "image": ""
+    },
+    {
+        "id": 7,
+        "name": "Classical",
+        "image": ""
+    },
+    {
+        "id": 8,
+        "name": "Metal",
+        "image": ""
+    },
+    {
+        "id": 9,
+        "name": "Blues",
+        "image": ""
+    },
+    {
+        "id": 10,
+        "name": "Other",
+        "image": ""
+    }
+]

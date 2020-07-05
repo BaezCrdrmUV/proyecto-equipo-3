@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {} from '../../redux/actions/elementToRender'
+import genreList from '../../example/genres.json'
+
 
 
 import './Genres.css';
@@ -10,17 +12,13 @@ export class Albums extends Component {
 
  
 
-   getGenres(){
-
-   }
-
    getGenreSongs(id){
 
    }
 
 
    renderGenres(){
-       const genres = this.getGenres;
+       const genres = genreList;
        return(
            <div className="row">
                {

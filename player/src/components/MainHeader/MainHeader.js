@@ -42,7 +42,8 @@ ToRender(){
         case "renderGenres" : {
             return(
                 <div>
-                    <Genres></Genres>
+                    <h1>hola</h1>
+                    {/* <Genres></Genres> */}
                 </div>
             )
         }
