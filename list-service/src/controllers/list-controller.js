@@ -86,7 +86,7 @@ const getLists = async (req, res) =>{
         if (list == null){
             res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
         }else{
-            res.send({ status: 'ok', data: song });
+            res.send({ status: 'ok', data: list });
         }
 
     } catch (error) {
