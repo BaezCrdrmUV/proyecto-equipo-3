@@ -5,6 +5,7 @@ const routes = require('./routes/upload-routes');
 const queue = require('./queue.js')
 const dotenv = require('dotenv');
 global.songDir = path.resolve('../songs');
+global.imageDir = path.resolve('../images');
 const queueTime = 120000;
 
 dotenv.config();

@@ -18,9 +18,23 @@ var optionsMulter = multer.diskStorage({
         cb(null, fileWithoutSpaceName);
     }
 });
+var optionsMulterImages = multer.diskStorage({
+    destination: function(req, file, cb){
+        var fileWithoutSpaceName = conversion.eliminateEmptySpaces(file.originalname)
+        conversion.makeDirectory(`${imageDir}/${fileWithoutSpaceName}`)
+        console.log(`${imageDir}/${fileWithoutSpaceName}`);
+        cb(null, `${imageDir}/${fileWithoutSpaceName}`);
+    },
+    filename: function(req, file, cb){
+        var fileWithoutSpaceName = file.originalname.replace(/\s+/g, '');
+        cb(null, fileWithoutSpaceName);
+    }
+});
 
-var upload = multer({storage: optionsMulter});
+var uploadSong = multer({storage: optionsMulter});
+var uploadImage = multer({storage: optionsMulterImages});
 
-router.post('/uploadsong', upload.single('mp3'), uploadController.uploadsong);
+router.post('/uploadsong', uploadSong.single('mp3'), uploadController.uploadsong);
+router.post('/uploadImage', uploadImage.single('jpg'), uploadController.uploadimage);
 
 module.exports = router;

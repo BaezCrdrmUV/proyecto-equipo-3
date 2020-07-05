@@ -9,6 +9,11 @@ const uploadsong = async(req, res) =>{
    conversion.createSong(req, req.file.originalname)
 };
 
+const uploadimage = async(req, res) =>{
+   console.log('Imagen recibida: ' + req.file.originalname);
+   res.json({message: 'Imagen recibida: ' + req.file.originalname});
+};
 
-module.exports = {uploadsong};
+
+module.exports = {uploadsong, uploadimage};
 
