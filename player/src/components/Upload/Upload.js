@@ -134,10 +134,12 @@ export class Upload extends Component {
   }
 
   checkSongList(){
-    if(this.state.albumSongs){
-      return true; 
+    if(this.state.albumSongs.length <= 0){
+    
+      alert("add at least one song");
+      return false; 
     }
-    return false;
+    return true;
   }
 
   checkSongInputs(){
