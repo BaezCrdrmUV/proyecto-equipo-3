@@ -44,9 +44,9 @@ serviceEndpoints:
   downloadService:
     url: 'http://download-service:3002'
   listService:
-    url: 'http://list-Service:3003'
+    url: 'http://list-service:3003'
   metadataService:
-    url: 'http://metadata-service:3004'
+    url: 'http://metadata-ervice:3004'
   usersService:
     url: 'http://users-service:3005'
   libraryService:
@@ -55,6 +55,7 @@ policies:
   - cors
   - expression
   - log
+  - jwt
   - proxy
   - rate-limit
 pipelines:
@@ -62,6 +63,10 @@ pipelines:
     apiEndpoints:
       - upload
     policies:
+      - jwt:
+          action:
+            secretOrPublicKeyFile: 'config/key.pem'
+            checkCredentialExistence: false
       - proxy:
           - action:
               serviceEndpoint: uploadService 
@@ -70,6 +75,10 @@ pipelines:
     apiEndpoints:
       - streaming
     policies:
+      - jwt:
+          action:
+            secretOrPublicKeyFile: 'config/key.pem'
+            checkCredentialExistence: false
       - proxy:
           - action:
               serviceEndpoint: streamingService 
@@ -78,6 +87,10 @@ pipelines:
     apiEndpoints:
       - download
     policies:
+      - jwt:
+          action:
+            secretOrPublicKeyFile: 'config/key.pem'
+            checkCredentialExistence: false
       - proxy:
           - action:
               serviceEndpoint: downloadService
@@ -86,6 +99,10 @@ pipelines:
     apiEndpoints:
       - list
     policies:
+      - jwt:
+          action:
+            secretOrPublicKeyFile: 'config/key.pem'
+            checkCredentialExistence: false
       - proxy:
           - action:
               serviceEndpoint: listService
@@ -94,6 +111,10 @@ pipelines:
     apiEndpoints:
       - metadata
     policies:
+      - jwt:
+          action:
+            secretOrPublicKeyFile: 'config/key.pem'
+            checkCredentialExistence: false
       - proxy:
           - action:
               serviceEndpoint: metadataService
