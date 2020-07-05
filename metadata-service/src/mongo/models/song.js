@@ -10,7 +10,6 @@ const songSchema = new Schema({
     genre : {type: String, required: true},
     year: {type:String, required: true},
     urlStreaming: {type: String, required: true},
-    urlImage: {type: String, required: true}
 });
 
 const model = mongoose.model('Song', songSchema);
