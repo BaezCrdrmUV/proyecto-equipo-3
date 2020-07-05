@@ -93,6 +93,11 @@ class Register extends Component {
                     <Button variant="primary" type="submit">
                         Register
                     </Button>
+                    <Link to="/login">
+                        <Button className="button-back" variant="link" type="button" >
+                            back to login
+                        </Button>
+                    </Link>
                 </Form>
 
                 {this.state.registerSuccess && <Redirect to="/login"></Redirect>}
