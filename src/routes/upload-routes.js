@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router(); 
 const conversion = require('../controllers/conversionLibrary')
 const uploadController = require('../controllers/upload-controller')
+const path = require('path');
 
 var multer = require('multer');
 
@@ -20,7 +21,7 @@ var optionsMulter = multer.diskStorage({
 });
 var optionsMulterImages = multer.diskStorage({
     destination: function(req, file, cb){
-        var fileWithoutSpaceName = conversion.eliminateEmptySpaces(file.originalname)
+        var fileWithoutSpaceName = conversion.eliminateEmptySpacesImage(file.originalname)
         conversion.makeDirectory(`${imageDir}/${fileWithoutSpaceName}`)
         console.log(`${imageDir}/${fileWithoutSpaceName}`);
         cb(null, `${imageDir}/${fileWithoutSpaceName}`);

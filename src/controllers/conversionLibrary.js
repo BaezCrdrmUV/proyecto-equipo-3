@@ -46,6 +46,11 @@ function eliminateEmptySpaces(songName){
     songName = songName.replace(/\s+/g, '');
     return songName;
 }
+function eliminateEmptySpacesImage(imageName){
+    imageName = path.basename(imageName, '.jpg');
+    imageName = imageName.replace(/\s+/g, '');
+    return imageName;
+}
 
 function resizeAudio(song, bitrate) {
     const name = song;
@@ -84,4 +89,4 @@ const createSong = async(req, songName) =>{
 }
 
 
-module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces, createSong}
+module.exports = {makeDirectory, resizeDiferentAudio, eliminateEmptySpaces, eliminateEmptySpacesImage, createSong}
