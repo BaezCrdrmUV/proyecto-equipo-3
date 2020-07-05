@@ -43,18 +43,15 @@ const addSongList = async (req, res) =>{
 const removeSongList = async (req, res) =>{
     try {
         const { listId, songs } = req.body;
-        if (await List.findById(listId) == null){
-            res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
-        }else{
-            await List.findOneAndUpdate({_id: listId},
-                {$pull: {songs: songs}, function (error, response) {
-                    if (error){
-                        res.status(403).send({ status: 'ERROR', message: 'Error al quitar las canciones' });
-                    }else{
-                        res.status(200).send({ status: 'ok', message: 'Canciones eliminadas' });
-                    }
-                }});
-        }
+        await List.findOneAndUpdate({_id: listId},
+            {$pullAll: {songs: songs}}, function (error, response) {
+                if (error){
+                    res.status(403).send({ status: 'ERROR', message: 'Error al remover las canciones' });
+                }else{
+                    
+                    res.status(200).send({ status: 'ok', message: 'Canciones eliminadas' });
+                }
+            });
     } catch (error) {
         res.status(404).send({ status: 'ERROR', message: 'Lista no encontrada' });
     }
