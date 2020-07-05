@@ -7,6 +7,6 @@ router.put('/playlist/AddSong', playlistController.addSongList);
 router.put('/playlist/RemoveSong', playlistController.removeSongList);
 router.delete('/playlist/Deletelist', playlistController.deleteList);
 router.get('/playlist/GetPlaylist', playlistController.getLists);
-router.get('/playlist/GetMyPlaylist', playlistController.getLists);
+router.get('/playlist/GetMyPlaylist', playlistController.getMyPlaylists);
 
 module.exports = router;
