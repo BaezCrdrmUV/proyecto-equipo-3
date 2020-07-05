@@ -65,7 +65,25 @@ const removeSongList = async (req, res) =>{
 };
 
 const deleteList = async (req, res) =>{
+    try {
+        const { listId } = req.body;
+        List.findByIdAndDelete({_id: listId}, function(error, response) {
+            if (error){
+                res.status(505).send({ status: 'ERROR', message: 'Lista no eliminada' });
+            }else{
+                res.status(200).send({ status: 'Ok', message: 'Lista eliminada' });
+            }
+        });
 
+    } catch (ERROR) {
+        if (ERROR.name == 'ValidationError') {
+            res.status(400).send({ status: 'ERROR', message: 'Valores ingresados invalidos' });
+        } else {
+            console.log(ERROR);
+
+            res.status(505).send({ status: 'ERROR', message: 'Lista eliminadas' });
+        }
+    }
 };
 
 const getLists = async (req, res) =>{
