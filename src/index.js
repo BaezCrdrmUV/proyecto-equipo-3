@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 global.songDir = path.resolve('../songs');
-global.songDir = path.resolve('../images');
+global.imagesDir = path.resolve('../images');
 
 const PORT = 3000;
 
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();	
 });
 app.use(express.static(songDir));
-app.use(express.static(songDir));
+app.use(express.static(imagesDir));
 
 
 app.listen(PORT, function(){
