@@ -12,6 +12,7 @@ const login = async(req, res) => {
                     if(isOk){
                         const token = tokenService.createToken(user);
                         res.status(200).send({
+                            status:'ok',
                             message: 'Logeado correctamente',
                             token: token
                         })
