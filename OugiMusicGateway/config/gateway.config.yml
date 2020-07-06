@@ -63,6 +63,7 @@ pipelines:
     apiEndpoints:
       - upload
     policies:
+      - cors:
       - jwt:
           action:
             secretOrPublicKeyFile: 'config/key.pem'
@@ -75,6 +76,7 @@ pipelines:
     apiEndpoints:
       - streaming
     policies:
+      - cors:
       - jwt:
           action:
             secretOrPublicKeyFile: 'config/key.pem'
@@ -87,6 +89,7 @@ pipelines:
     apiEndpoints:
       - download
     policies:
+      - cors:
       - jwt:
           action:
             secretOrPublicKeyFile: 'config/key.pem'
@@ -99,6 +102,7 @@ pipelines:
     apiEndpoints:
       - list
     policies:
+      - cors:
       - jwt:
           action:
             secretOrPublicKeyFile: 'config/key.pem'
@@ -111,6 +115,7 @@ pipelines:
     apiEndpoints:
       - metadata
     policies:
+      - cors:
       - jwt:
           action:
             secretOrPublicKeyFile: 'config/key.pem'
