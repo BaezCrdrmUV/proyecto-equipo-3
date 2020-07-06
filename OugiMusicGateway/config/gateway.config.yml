@@ -40,15 +40,15 @@ serviceEndpoints:
   uploadService:
     url: 'http://upload-service:3000'
   streamingService:
-    url: 'http://streaming-service:3001'
+    url: 'http://streaming-service:3000'
   downloadService:
-    url: 'http://download-service:3002'
+    url: 'http://download-service:3000'
   listService:
-    url: 'http://list-service:3003'
+    url: 'http://list-service:3000'
   metadataService:
-    url: 'http://metadata-service:3004'
+    url: 'http://metadata-service:3000'
   usersService:
-    url: 'http://users-service:3005'
+    url: 'http://users-service:3000'
   libraryService:
     url: 'http://localhost:3006'
 policies:
