@@ -91,6 +91,7 @@ export class Upload extends Component {
         this.setState({ albumID: json.album });
         this.prepareSongs();
         await this.uploadMetadata();
+        // await this.uploadImage();
       }
     } catch (error) {
       console.log(error);
@@ -168,11 +169,8 @@ export class Upload extends Component {
   }
 
   async uploadImage(){
-
-
-
       let data = new FormData();
-      data.append("image", this.state.albumImage)
+      data.append("jpg", this.state.albumImage)
       data.append("title", this.state.albumName)
 
       const settings = {
@@ -225,7 +223,7 @@ export class Upload extends Component {
     const songs = this.state.albumSongs;
 
     songs.forEach(song => {
-      song["urlStreaming"] = this.createAlbumPath(song.title);
+      song["urlStreaming"] = this.createAlbumPath(song.mp3.name);
       song["urlImage"] = this.createImagePath(this.state.albumName);
       song["albumID"] = this.state.albumID;
     });
@@ -234,12 +232,16 @@ export class Upload extends Component {
   }
 
   createAlbumPath(name){
-    var path = "localhost:8081/"+ name+"/" + name+".m3u8";
+    var name2 = name.substring(0,name.lastIndexOf("."))
+    var path = "localhost:8081/"+ name2+"/" + name2+".m3u8"
+    console.log(path);
     return path;
   }
 
   createImagePath(name){
-    var path = "localhost:8081/"+ name+"/"+ name+".jpg";
+    var name2 = name.substring(0,name.lastIndexOf("."))
+
+    var path = "localhost:8081/"+ name2+"/"+ name2+".jpg";
     return path;
   }
 
@@ -286,10 +288,10 @@ export class Upload extends Component {
   }
 
   checkImageFile(){
-    if(!this.state.albumImage.match(/.(jpg)$/i)){
-      alert("not a image");
-      return false;
-    }
+    // if(!this.state.albumImage.match(/.(jpg)$/i)){
+    //   alert("not a image");
+    //   return false;
+    // }
     return true;
   }
 
