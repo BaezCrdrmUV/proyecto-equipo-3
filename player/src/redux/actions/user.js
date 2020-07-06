@@ -36,10 +36,7 @@ const updateUsername = (username) =>{
 
 
 async function doRegister(username, password, email) {
-    var salt = await bcrypt.genSaltSync(10);
-
-    const hash = await bcrypt.hash(password, salt);
-    console.log(hash);
+ 
     const settings = {
         method: 'POST',
         headers: new Headers({
@@ -49,13 +46,13 @@ async function doRegister(username, password, email) {
 
         body: JSON.stringify({
             'username': username,
-            'password': hash,
+            'password': password,
             'email' : email
         })
     }
 
     try {
-        const response = await fetch('http://localhost:9000/create', settings);
+        const response = await fetch('http://localhost:80/create', settings);
         const json = await response.json();
         console.log(json);
         return json;
@@ -81,7 +78,7 @@ async function doLogin(user, password) {
         })
     }
     try {
-        const response = await fetch('http://localhost:9000/login', settings);
+        const response = await fetch('http://localhost:80/login', settings);
         const json = await response.json();
         console.log(json);
         return json;

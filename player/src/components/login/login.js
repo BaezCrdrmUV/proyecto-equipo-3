@@ -55,7 +55,6 @@ class Login extends Component {
           console.log("todo chido");
           this.props.updateLoginStatus("ok");
           this.props.updateUsername(this.state.username);
-          console.log(this.props.user.currentUser);
           this.setState({ loginSuccess: result.status });
           break;
         }
