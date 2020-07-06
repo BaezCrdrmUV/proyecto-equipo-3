@@ -16,14 +16,36 @@ class AlbumTrackList extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    console.log(this.props);
     this.props.getSelectedAlbum(this.props.elementToRender.id);
     const selectedPlaylist = this.props.album.selectedAlbum;
-    const songsInPlaylist = selectedPlaylist.songs;
-    this.props.getSongs(songsInPlaylist);
-    console.log(songsInPlaylist);
-    console.log(this.props);
-    this.setState({ selectedSongs: this.props.elementToRender.id });
+
+    const settings = {
+      method: 'POST',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+
+      }),
+
+      body: JSON.stringify({
+        "albumId": this.props.elementToRender.id
+      })
+    }
+    try {
+      const response =  await fetch('http://localhost:80/songs/getSongsByAlbum', settings);
+      const json = await response.json();
+      console.log(json);
+      this.props.getSongs(json.data);
+      console.log(this.props);
+      this.setState({ selectedSongs: json.data});
+    } catch (error) {
+      console.log(error);
+    }
+
+
+
   }
 
 

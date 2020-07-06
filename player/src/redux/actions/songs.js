@@ -4,7 +4,7 @@ const getSongs = (songs) => {
 
     return {
         type : "getSongs",
-        payload : getSong(songs)
+        payload : songs
     };
 };
 

@@ -38,7 +38,6 @@ class playlist extends Component {
       try {
         const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
         const json = await response.json();
-        console.log(json.data);
         this.props.getPlaylists(json.data);
         this.setState({playlists: json.data})
       } catch (error) {
@@ -46,36 +45,34 @@ class playlist extends Component {
       }
     }
 
-    async componentDidUpdate(){
+    // async componentDidUpdate(){
 
-      if(this.props.userplaylists.playlists.length !== this.state.playlists.lenght){
-        console.log(this.props.userplaylists.playlists.lenght, this.state.playlists.lenght)
-        const settings = {
-          method: 'POST',
-          headers: new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+    //   if(this.props.userplaylists.playlists.length !== this.state.playlists.lenght){
+    //     const settings = {
+    //       method: 'POST',
+    //       headers: new Headers({
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json',
   
-          }),
+    //       }),
     
-          body: JSON.stringify({
-            "user": this.props.user.currentUser
-          })
-        }
+    //       body: JSON.stringify({
+    //         "user": this.props.user.currentUser
+    //       })
+    //     }
     
-        try {
-          const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
-          const json = await response.json();
-          console.log(json.data);
-          this.props.getPlaylists(json.data);
-          this.setState({playlists: json.data})
+    //     try {
+    //       const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
+    //       const json = await response.json();
+    //       this.props.getPlaylists(json.data);
+    //       this.setState({playlists: json.data})
 
-        } catch (error) {
-          console.log(error);
-        }
-      }
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
   
-    }
+    // }
    
    
 

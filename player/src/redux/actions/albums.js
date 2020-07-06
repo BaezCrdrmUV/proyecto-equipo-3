@@ -1,7 +1,7 @@
-const getAlbums = () => {
+const getAlbums = (albums) => {
     return {
         type: 'getAlbums',
-        
+        payload : albums
     };
 };
 

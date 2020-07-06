@@ -1,8 +1,7 @@
-import allAlbums from '../../example/album.json'
 
 
 const defaultState = {
-    albums : allAlbums,
+    albums : "",
     selectedAlbum : ""
 }
 
@@ -12,6 +11,7 @@ function reducer (state = defaultState, {type, payload}){
         case 'getAlbums': {
             return {
                 ...state,
+                albums: state.albums = payload
             }
             
         }
@@ -19,7 +19,7 @@ function reducer (state = defaultState, {type, payload}){
         case 'getSelectedAlbum':{
             return{
                 ...state,
-                selectedAlbum: state.selectedAlbum = state.albums[payload]
+                selectedAlbum: state.selectedAlbum = payload
 
             }
         }

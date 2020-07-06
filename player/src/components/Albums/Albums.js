@@ -8,28 +8,49 @@ import './Albums.css';
 
 export class Albums extends Component {
 
+    state =  {
+        allAlbums: []
+    }
 
-    componentDidMount(){
-    this.props.getAlbums();
+    async componentDidMount(){
+        
+        const settings = {
+            method: 'GET',
+            headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+    
+            })
+          }
+          try {
+            const response =  await fetch('http://localhost:80/songs/getAllAlbums', settings);
+            const json = await response.json();
+            console.log(json);
+            this.props.getAlbums(json);
+            this.setState({allAlbums: json.data})
+          } catch (error) {
+            console.log(error);
+          }
 
     console.log(this.props);
 
    }
 
    renderAlbums(){
-       const albums = this.props.album.albums;
+       const albums = this.state.allAlbums;
+       console.log(albums)
        return(
            <div className="row">
                {
                    albums.map(album => {
-                       return <div  key={album.id}>
+                       return <div  key={album._id}>
                             <div className="columnAlbum" 
                                     onClick={
-                                        () => this.props.renderAlbumSongs(album.id)
+                                        () => this.props.renderAlbumSongs(album._id)
                                     } >
                                 <div className="contentAlbum">
                                 <img src={album.urlImage} alt="AlbumImage" className="image"/>
-                                <h4>{album.name}</h4>
+                                <h4>{album.albumname}</h4>
                                 <p>{album.artist}</p>
                                 </div>
 
