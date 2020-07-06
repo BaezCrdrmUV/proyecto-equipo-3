@@ -2,7 +2,7 @@ import React, { Component,useState } from 'react'
 import "./playlist.css"
 import {connect} from 'react-redux';
 import {Modal, Button, Form} from 'react-bootstrap'
-import { useStore, useSelector, shallowEqual } from 'react-redux'
+import { useStore, useSelector, shallowEqual, useDispatch  } from 'react-redux'
 
 // import playlistsExample from '../../example/playlist.json'
 import {renderPlaylists} from '../../redux/actions/elementToRender'
@@ -45,34 +45,34 @@ class playlist extends Component {
       }
     }
 
-    // async componentDidUpdate(){
+    async componentDidUpdate(){
 
-    //   if(this.props.userplaylists.playlists.length !== this.state.playlists.lenght){
-    //     const settings = {
-    //       method: 'POST',
-    //       headers: new Headers({
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
+      if(this.props.userplaylists.playlists !== this.state.playlists){
+        const settings = {
+          method: 'POST',
+          headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
   
-    //       }),
+          }),
     
-    //       body: JSON.stringify({
-    //         "user": this.props.user.currentUser
-    //       })
-    //     }
+          body: JSON.stringify({
+            "user": this.props.user.currentUser
+          })
+        }
     
-    //     try {
-    //       const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
-    //       const json = await response.json();
-    //       this.props.getPlaylists(json.data);
-    //       this.setState({playlists: json.data})
+        try {
+          const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
+          const json = await response.json();
+          this.props.getPlaylists(json.data);
+          this.setState({playlists: json.data})
 
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
+        } catch (error) {
+          console.log(error);
+        }
+      }
   
-    // }
+    }
    
    
 
@@ -126,6 +126,8 @@ function RenderNewPlaylistModal  ()  {
 
     const selectedData = useSelector(state => state);
 
+    const dispatch = useDispatch();
+
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -138,14 +140,22 @@ function RenderNewPlaylistModal  ()  {
 
     // }
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        createPlaylist(name);
+        await createPlaylist(name);
+
+        const newPlaylist = {
+          "name": name,
+          "user": selectedData.user.currentUser
+        }
+        console.log(selectedData.playlists.playlists);
+
+        dispatch({type:"getPlaylists", payload :  selectedData.playlists.playlists.concat( newPlaylist) });
+
     }
 
 
     const createPlaylist = async (name) => {
-
         console.log(selectedData);
         const settings = {
             method: 'POST',
@@ -166,6 +176,7 @@ function RenderNewPlaylistModal  ()  {
             const json = await response.json();
             console.log(json);
             return json;
+
           } catch (error) {
             console.log(error);
           }
