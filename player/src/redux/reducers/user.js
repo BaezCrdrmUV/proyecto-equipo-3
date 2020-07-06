@@ -48,6 +48,13 @@ function reducer(state = defaultState, { type, payload }) {
             }
         }
 
+        case 'updateToken':{
+            return{
+                ...state,
+                token : state.token = payload
+            }
+        }
+
         default:
             return state;
     }

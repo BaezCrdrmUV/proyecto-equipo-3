@@ -34,6 +34,13 @@ const updateUsername = (username) =>{
     }
 }
 
+const updateToken = (token) => {
+    return {
+        type : 'updateToken',
+        payload: token
+    }
+}
+
 
 async function doRegister(username, password, email) {
  
@@ -87,4 +94,4 @@ async function doLogin(user, password) {
     }
 }
 
-export {userLogin, createUser, updateLoginStatus, updateUsername}
+export {userLogin, createUser, updateLoginStatus, updateUsername, updateToken}

@@ -22,14 +22,12 @@ class App extends React.Component {
 
   componentDidUpdate() {
     if(this.props.user.loginStatus === 'ok' && !this.state.loggedIn ){
-        console.log('ok');
         if (!this.state.isLogged) {
             this.setState({
               loggedIn: true
             });
         }
     }
-    console.log(this.props.user.loginStatus);
   }
 
   render(){

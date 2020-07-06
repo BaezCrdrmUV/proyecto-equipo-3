@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
 import { updateLoginStatus } from '../../redux/actions/user';
 import { updateUsername } from '../../redux/actions/user';
+import { updateToken } from '../../redux/actions/user';
+
 
 import { Link, Redirect,  } from "react-router-dom";
 
@@ -55,6 +57,9 @@ class Login extends Component {
           console.log("todo chido");
           this.props.updateLoginStatus("ok");
           this.props.updateUsername(this.state.username);
+          const token = result.token
+          this.props.updateToken(token);
+          console.log(this.props.user.token);
           this.setState({ loginSuccess: result.status });
           break;
         }
@@ -121,7 +126,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   userLogin,
   updateLoginStatus,
-  updateUsername
+  updateUsername,
+  updateToken
 }
 
 
