@@ -16,7 +16,7 @@ import Upload from './components/Upload/Upload';
 class App extends React.Component {
 
   state = {
-    loggedIn : true
+    loggedIn : false
     // loggedIn: "" 
   };
 

@@ -27,6 +27,13 @@ const updateLoginStatus = (status) => {
     }
 }
 
+const updateUsername = (username) =>{
+    return {
+        type: 'updateUsername',
+        payload: username
+    }
+}
+
 
 async function doRegister(username, password, email) {
     var salt = await bcrypt.genSaltSync(10);
@@ -83,4 +90,4 @@ async function doLogin(user, password) {
     }
 }
 
-export {userLogin, createUser, updateLoginStatus}
+export {userLogin, createUser, updateLoginStatus, updateUsername}

@@ -5,7 +5,9 @@ import Button from "react-bootstrap/Button";
 import { connect } from 'react-redux';
 import { userLogin } from '../../redux/actions/user';
 import { updateLoginStatus } from '../../redux/actions/user';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect,  } from "react-router-dom";
+import { updateUsername } from '../../redux/actions/user';
+
+import { Link, Redirect,  } from "react-router-dom";
 
 
 class Login extends Component {
@@ -52,7 +54,8 @@ class Login extends Component {
         case "ok": {
           console.log("todo chido");
           this.props.updateLoginStatus("ok");
-          console.log(this.props.user.loginStatus);
+          this.props.updateUsername(this.state.username);
+          console.log(this.props.user.currentUser);
           this.setState({ loginSuccess: result.status });
           break;
         }
@@ -118,7 +121,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   userLogin,
-  updateLoginStatus
+  updateLoginStatus,
+  updateUsername
 }
 
 

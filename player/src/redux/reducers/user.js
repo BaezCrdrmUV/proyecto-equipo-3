@@ -9,11 +9,8 @@ const defaultState = {
         password: ""
     },
 
-    currentUser : {
-        username: "",
-        token: "",
-    },
-
+    currentUser : "" ,
+    token: "",
     loginStatus: "",
 
     registerStatus: "" 
@@ -41,6 +38,13 @@ function reducer(state = defaultState, { type, payload }) {
             return{
                 ...state,
                 loginStatus : state.loginStatus = payload
+            }
+        }
+
+        case 'updateUsername':{
+            return{
+                ...state,
+                currentUser : state.currentUser = payload
             }
         }
 
