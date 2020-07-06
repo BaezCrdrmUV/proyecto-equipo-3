@@ -2,6 +2,8 @@ import React, { Component,useState } from 'react'
 import "./playlist.css"
 import {connect} from 'react-redux';
 import {Modal, Button, Form} from 'react-bootstrap'
+import { useStore, useSelector, shallowEqual } from 'react-redux'
+
 // import playlistsExample from '../../example/playlist.json'
 import {renderPlaylists} from '../../redux/actions/elementToRender'
 
@@ -68,6 +70,10 @@ function RenderNewPlaylistModal  ()  {
     const [show, setShow] = useState(false);
     const [name, setName] = useState("");
 
+
+    const selectedData = useSelector(state => state);
+
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -81,7 +87,35 @@ function RenderNewPlaylistModal  ()  {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        alert(`Submitting Name ${name}`)
+        createPlaylist(name);
+    }
+
+
+    const createPlaylist = async (name) => {
+
+        console.log(selectedData);
+        const settings = {
+            method: 'POST',
+            headers: new Headers({
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+
+            }),
+      
+            body: JSON.stringify({
+              "name": name,
+              "user": selectedData.user.currentUser
+            })
+          }
+      
+          try {
+            const response =  await fetch('http://localhost:80/playlist/CreatePlaylist', settings);
+            const json = await response.json();
+            console.log(json);
+            return json;
+          } catch (error) {
+            console.log(error);
+          }
     }
   
     return (
@@ -122,11 +156,16 @@ function RenderNewPlaylistModal  ()  {
         </Modal>
       </>
     );
+
+
+
+
 }
 
 const mapStateToProps = (state) => {
     return {
-        userplaylists : state.playlists
+        userplaylists : state.playlists,
+        user: state.user
         
     };
 };

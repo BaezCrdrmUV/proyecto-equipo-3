@@ -64,32 +64,74 @@ export class Upload extends Component {
 
 
 
-  uploadAlbum(){
+  async uploadAlbum(){
 
-    const album = {
-      "name" : this.state.albumName,
-      "artist" : this.state.albumArtist,
-      "year" : this.state.albumYear,
-      "urlImage" : this.createImagePath()
+    const settings = {
+      method: 'POST',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // 'Authorization': "Bearer " + this.props.user.token
+      }),
+
+      body: JSON.stringify({
+        "albumname": this.state.albumName,
+        "artist": this.state.albumArtist,
+        "releaseyear": this.state.albumYear,
+        "urlImage": this.createImagePath(this.state.albumName)
+      })
     }
 
-    this.setState({ albumID: "awa" });
+    try {
+      console.log(settings);
+      const response = await fetch('http://localhost:80/songs/createAlbum', settings);
+      const json = await response.json();
+      console.log(json);
+      if(json.status === 'ok'){
+        this.setState({ albumID: json.album });
+        this.prepareSongs();
+        await this.uploadMetadata();
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
   }
 
 
-  uploadMetadata(){
+  async uploadMetadata(){
 
     const songs = this.state.albumSongs;
 
-    const albumSongs = {
-      "album" : this.state.albumName,
-      "artist" : this.state.albumArtist,
-      "year" : this.state.albumYear,
-      "songList": songs
+    const settings = {
+      method: 'POST',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // 'Authorization': "Bearer " + this.props.user.token
+      }),
+
+      body: JSON.stringify({
+        "album" : this.state.albumName,
+        "albumId": this.state.albumID,
+        "artist" : this.state.albumArtist,
+        "year" : this.state.albumYear,
+        "songList": songs
+      })
     }
 
-    console.log(albumSongs);
+    try {
+      console.log(songs);
+
+      const response = await fetch('http://localhost:80/songs/createSongs', settings);
+      const json = await response.json();
+      console.log(json);
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+
   }
   
 
@@ -102,12 +144,11 @@ export class Upload extends Component {
   }
 
 
-  sumbitAlbum(e) {
+    sumbitAlbum(e) {
     e.preventDefault(e);
     if(this.checkImageFile() && this.checkSongList()){
-      this.uploadAlbum();
-      this.prepareSongs();
-      this.uploadMetadata();
+       this.uploadAlbum();
+
     }
   }
 
@@ -123,7 +164,6 @@ export class Upload extends Component {
       const listSongs = this.state.albumSongs;
       this.setState({ albumSongs: listSongs.concat([song]) });
       this.clearInputs();
-      console.log("hola");
 
     }
   }
@@ -194,7 +234,7 @@ export class Upload extends Component {
   }
 
   checkImageFile(){
-    if(!this.state.albumImage.match(/.(jpg|jpeg|png)$/i)){
+    if(!this.state.albumImage.match(/.(jpg)$/i)){
       alert("not a image");
       return false;
     }
@@ -346,7 +386,10 @@ export class Upload extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  user: state.user
+
+});
 
 const mapDispatchToProps = {};
 
