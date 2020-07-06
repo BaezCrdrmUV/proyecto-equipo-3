@@ -8,12 +8,14 @@ services:
             - PORT=3000
         volumes: 
             - ../songs:/var/songs
+            - ../images:/var/images
         ports: 
             - 3000:3000
     streaming-service:
         build: Services/Streaming
         volumes: 
             - ../songs:/var/songs
+            - ../images:/var/images
         ports: 
             - 3001:3000
     download-service:
