@@ -1,7 +1,9 @@
-const getPlaylists = (id) => {
+// import playlist from "../../components/playlists/playlist";
+
+const getPlaylists = (playlists) => {
     return {
         type: 'getPlaylists',
-        id
+        payload : playlists
     };
 };
 

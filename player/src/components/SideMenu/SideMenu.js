@@ -24,7 +24,7 @@ import './SideMenu.css'
                         <h2 className="user-library-header" >Your Library</h2>
                         <li className="side-menu-item"  onClick={() => {
                                     this.props.renderAlbumLists() }} >Albums</li>
-                        <li className="side-menu-item">Artists</li>
+                        {/* <li className="side-menu-item">Artists</li> */}
                         <li className="side-menu-item">songs</li>
 
                     </ul>

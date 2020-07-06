@@ -6,13 +6,14 @@ import { useStore, useSelector, shallowEqual } from 'react-redux'
 
 // import playlistsExample from '../../example/playlist.json'
 import {renderPlaylists} from '../../redux/actions/elementToRender'
+import {getPlaylists} from '../../redux/actions/playlists'
 
 
 class playlist extends Component {
 
-    // state =  {
-    //     playlists: []
-    // }
+    state =  {
+        playlists: []
+    }
 
     // async componentDidMount() {
     //     const data = playlistsExample;
@@ -20,10 +21,65 @@ class playlist extends Component {
     // }
 
 
+    async componentDidMount(){
+      const settings = {
+        method: 'POST',
+        headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+
+        }),
+  
+        body: JSON.stringify({
+          "user": this.props.user.currentUser
+        })
+      }
+  
+      try {
+        const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
+        const json = await response.json();
+        console.log(json.data);
+        this.props.getPlaylists(json.data);
+        this.setState({playlists: json.data})
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async componentDidUpdate(){
+
+      if(this.props.userplaylists.playlists.length !== this.state.playlists.lenght){
+        console.log(this.props.userplaylists.playlists.lenght, this.state.playlists.lenght)
+        const settings = {
+          method: 'POST',
+          headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+  
+          }),
+    
+          body: JSON.stringify({
+            "user": this.props.user.currentUser
+          })
+        }
+    
+        try {
+          const response =  await fetch('http://localhost:80/playlist/GetMyPlaylist', settings);
+          const json = await response.json();
+          console.log(json.data);
+          this.props.getPlaylists(json.data);
+          this.setState({playlists: json.data})
+
+        } catch (error) {
+          console.log(error);
+        }
+      }
+  
+    }
    
    
 
-    GetRenderPlayLists () {
+     GetRenderPlayLists () {
         const playlists = this.props.userplaylists.playlists;
         return (     
             <div>
@@ -171,7 +227,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = { 
-    renderPlaylists
+    renderPlaylists,
+    getPlaylists
     
 }
 

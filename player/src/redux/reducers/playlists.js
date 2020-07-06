@@ -1,7 +1,7 @@
 import Userplaylists from '../../example/playlist.json'
 
 const defaultState = {
-    playlists : Userplaylists,
+    playlists : [],
     selectedPlaylist : [],
     currentPlaylist : []
 } 
@@ -11,6 +11,7 @@ function reducer(state = defaultState, {type, payload}){
         case 'getPlaylists': {
             return {
                 ...state,
+                playlists : state.playlists = payload
             }
             
         }
