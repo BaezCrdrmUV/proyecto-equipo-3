@@ -55,11 +55,11 @@ export class Upload extends Component {
   }
 
   handleChangeMP3(e){
-    this.setState({songMP3: e.target.value});
+    this.setState({songMP3: e.target.files[0]});
   }
 
   handleChangeAlbumImage(e){
-    this.setState({albumImage: e.target.value})
+    this.setState({albumImage: e.target.files[0]});
   }
 
 
@@ -125,8 +125,8 @@ export class Upload extends Component {
 
       const response = await fetch('http://localhost:80/songs/createSongs', settings);
       const json = await response.json();
-      console.log(json);
-      
+      console.log(json.status === 'ok');
+        await this.uploadSongs();
     } catch (error) {
       console.log(error);
     }
@@ -135,11 +135,63 @@ export class Upload extends Component {
   }
   
 
-  uploadSongs(){
+  async uploadSongs(){
+
+
+     this.state.albumSongs.forEach(song => {
+
+      let data = new FormData();
+      data.append("mp3", song.mp3)
+      data.append("title", song.title)
+
+      const settings = {
+        method: 'POST',
+        headers: new Headers({
+
+          // 'Authorization': "Bearer " + this.props.user.token
+        }),
+  
+        body: data
+      }
+  
+      console.log(song.mp3);
+      try {
+        fetch('http://localhost:80/uploadsong', settings);
+
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+
 
   }
 
-  uploadImage(){
+  async uploadImage(){
+
+
+
+      let data = new FormData();
+      data.append("image", this.state.albumImage)
+      data.append("title", this.state.albumName)
+
+      const settings = {
+        method: 'POST',
+        headers: new Headers({
+          // 'Authorization': "Bearer " + this.props.user.token
+        }),
+  
+        body: data
+      }
+  
+      try {
+        fetch('http://localhost:80/uploadImage', settings);
+
+      } catch (error) {
+        console.log(error);
+      }
+  
+
 
   }
 
@@ -226,10 +278,10 @@ export class Upload extends Component {
 
   checkSongFile(){
 
-    if(!this.state.songMP3.match(/.(mp3)$/i)){
-      alert("not a mp3 file");
-      return false
-    }
+    // if(!this.state.songMP3.match(/.(mp3)$/i)){
+    //   alert("not a mp3 file");
+    //   return false
+    // }
     return true;
   }
 
@@ -338,7 +390,7 @@ export class Upload extends Component {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.File id="song" label="Select song in mp3" value={this.state.songMP3}  onChange={this.handleChangeMP3} required />
+                <Form.File id="song" label="Select song in mp3"   onChange={this.handleChangeMP3} required />
               </Form.Group>
 
               <Button variant="outline-primary" onClick={this.addSongToAlbum}>
@@ -362,7 +414,7 @@ export class Upload extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Form.File id="Imagen" label="Select image" value={this.state.albumImage} onChange={this.handleChangeAlbumImage} required/>
+            <Form.File id="Imagen" label="Select image"  onChange={this.handleChangeAlbumImage} required/>
           </Form.Group>
 
           <br></br>
