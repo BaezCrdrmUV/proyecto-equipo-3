@@ -3,6 +3,9 @@ version: '3'
 services:
     upload-service:
         build: Services/Upload
+        environment:
+            - MONGO="mongodb://user-service:users-service-mongo@cluster0-shard-00-00-2vcqh.mongodb.net:27017,cluster0-shard-00-01-2vcqh.mongodb.net:27017,cluster0-shard-00-02-2vcqh.mongodb.net:27017/convertionSongs?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
+            - PORT=3000
         volumes: 
             - ../songs:/var/songs
         ports: 
@@ -21,14 +24,24 @@ services:
             - 3002:3000
     list-service:
         build: Services/List
+        environment:
+            - MONGO="mongodb://user-service:users-service-mongo@cluster0-shard-00-00-2vcqh.mongodb.net:27017,cluster0-shard-00-01-2vcqh.mongodb.net:27017,cluster0-shard-00-02-2vcqh.mongodb.net:27017/metadata?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
+            - PORT=3000
         ports: 
             - 3003:3000
     metadata-service:
         build: Services/Metadata
         ports: 
             - 3004:3000
+        environment:
+            - MONGO="mongodb://user-service:users-service-mongo@cluster0-shard-00-00-2vcqh.mongodb.net:27017,cluster0-shard-00-01-2vcqh.mongodb.net:27017,cluster0-shard-00-02-2vcqh.mongodb.net:27017/metadata?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
+            - PORT=3000
     users-service:
         build: Services/User
+        environment:
+            - MONGO="mongodb://user-service:users-service-mongo@cluster0-shard-00-00-2vcqh.mongodb.net:27017,cluster0-shard-00-01-2vcqh.mongodb.net:27017,cluster0-shard-00-02-2vcqh.mongodb.net:27017/users?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
+            - PORT=3000
+            - SECRETKEY=Gimme Love
         ports: 
             - 3005:3000
     express-gateway:
