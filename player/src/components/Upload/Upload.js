@@ -60,6 +60,8 @@ export class Upload extends Component {
 
   handleChangeAlbumImage(e){
     this.setState({albumImage: e.target.files[0]});
+
+
   }
 
 
@@ -291,6 +293,7 @@ export class Upload extends Component {
   }
 
   checkImageFile(){
+    console.log(this.state.albumImage);
     if(!this.state.albumImage.name.match(/.(jpg)$/i)){
       alert("not a jpg image");
       return false;
