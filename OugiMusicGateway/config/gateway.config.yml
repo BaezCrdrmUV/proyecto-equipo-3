@@ -7,6 +7,7 @@ apiEndpoints:
   upload:
     paths:
       - '/uploadsong'
+      - '/uploadImage'
   download:
     paths:
       - '/getSongDownload'
@@ -16,14 +17,16 @@ apiEndpoints:
       - '/songs/createSongs'
       - '/songs/getSong'
       - '/songs/createArtist'
+      - '/songs/getSongId'
       - '/songs/getArtist'
       - '/songs/createAlbum'
       - '/songs/getAlbum'
+      - '/songs/getAllAlbums'
+      - '/songs/getSongsByAlbum'
   users:
     paths:
       - '/login'
       - '/create'
-      - '/tokenAuthorization'
   list:
     paths:
       - '/playlist/CreatePlaylist'
@@ -31,6 +34,7 @@ apiEndpoints:
       - '/playlist/RemoveSong'
       - '/playlist/Deletelist'
       - '/playlist/GetPlaylist'
+      - '/playlist/GetMyPlaylist'
 
   # This has to be last always
   streaming:
