@@ -241,7 +241,7 @@ export class Upload extends Component {
   createImagePath(name){
     var name2 = name.substring(0,name.lastIndexOf("."))
 
-    var path = "localhost:8081/"+ name2+"/"+ name2+".jpg";
+    var path = "http://localhost:80/"+ name2+"/"+ name2+".jpg";
     return path;
   }
 
