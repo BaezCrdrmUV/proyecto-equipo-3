@@ -15,27 +15,83 @@ class TrackList extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.getSelectedPlaylist(this.props.elementToRender.id);
     const selectedPlaylist = this.props.playlists.selectedPlaylist;
-    const songsInPlaylist = selectedPlaylist.songs;
-    this.props.getSongs(songsInPlaylist);
-    console.log(songsInPlaylist);
-    console.log(this.props);
-    this.setState({ selectedSongs: this.props.elementToRender.id });
+    const settings = {
+      method: 'POST',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+
+      }),
+
+      body: JSON.stringify({
+        "listId": this.props.elementToRender.id
+      })
+    }
+    try {
+      const response =  await fetch('http://localhost:80/playlist/GetPlaylist', settings);
+      const json = await response.json();
+      this.setState({ selectedSongs: json.data.songs});
+      const listSongs = await this.getSongsDb();
+      console.log(listSongs);
+      this.props.getSongs(listSongs);
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(this.props.songs.listSongs);
+
   }
 
-  componentDidUpdate() {
-    if (this.state.selectedSongs !== this.props.elementToRender.id) {
-      this.setState({ selectedSongs: this.props.elementToRender.id });
-      this.props.getSelectedPlaylist(this.props.elementToRender.id);
-      const selectedPlaylist = this.props.playlists.selectedPlaylist;
-      const songsInPlaylist = selectedPlaylist.songs;
-      this.props.getSongs(songsInPlaylist);
-      console.log(songsInPlaylist);
-      console.log(this.props);
-    }
+  
+
+  
+  async getSongsDb(){
+
+      let songsinSearch = [];
+      
+      this.state.selectedSongs.forEach( async (song) => {
+      const settings = {
+        method: 'POST',
+        headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }),
+  
+        body: JSON.stringify({
+          "songId": song
+        })
+      }
+      try {
+        const response =  await fetch('http://localhost:80/songs/getSongId', settings);
+        const json = await response.json();
+        songsinSearch.push(json.data);
+      } catch (error) {
+        console.log(error);
+      }
+
+    });
+
+    console.log("awa" ,songsinSearch);
+    return songsinSearch;
   }
+
+
+
+  // componentDidUpdate() {
+  //   if (this.state.selectedSongs !== this.props.elementToRender.id) {
+  //     this.setState({ selectedSongs: this.props.elementToRender.id });
+  //     this.props.getSelectedPlaylist(this.props.elementToRender.id);
+  //     const selectedPlaylist = this.props.playlists.selectedPlaylist;
+  //     const songsInPlaylist = selectedPlaylist.songs;
+  //     this.props.getSongs(songsInPlaylist);
+  //     console.log(songsInPlaylist);
+  //     console.log(this.props);
+  //   }
+  // }
 
   playSong(song) {
     this.props.currentSong(song);
@@ -62,7 +118,7 @@ class TrackList extends Component {
       <div>
         {this.props.songs.listSongs.map((song) => {
           return (
-            <div className="user-song-item" key={song.id}>
+            <div className="user-song-item" key={song._id}>
               <button
                 className="play-button"
                 onClick={() => this.playSong(song)}

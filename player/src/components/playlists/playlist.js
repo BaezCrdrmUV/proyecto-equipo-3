@@ -82,10 +82,10 @@ class playlist extends Component {
             <div>
                 {
                     playlists.map(playlist => {
-                        return <div key={playlist.id} > 
+                        return <div key={playlist._id} > 
                             <div className="playlist-item" 
                                 onClick={() => {
-                                    this.props.renderPlaylists(playlist.id);
+                                    this.props.renderPlaylists(playlist._id);
                                 }} 
                             >
                                 <p>{playlist.name}</p>
