@@ -16,17 +16,39 @@ class GenreSongs extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const genretype = this.props.elementToRender.genre;
 
-    const songsInPlaylist = this.getSongsInGenre(genretype);
+    const songsInPlaylist = await this.getSongsInGenre(genretype);
+    console.log(songsInPlaylist);
     this.props.getSongs(songsInPlaylist);
   }
 
-  getSongsInGenre(genretype){
-      return [ {
-        "id": 3
-            }   ]
+  async getSongsInGenre(genretype){
+      
+
+    const settings = {
+      method: 'POST',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+
+      }),
+
+      body: JSON.stringify({
+        "genre": genretype
+
+      })
+    }
+    try {
+      const response =  await fetch('http://localhost:80/songs/getSongByGenre', settings);
+      const json =  await response.json();
+      console.log(json.data);
+      return (json.data)
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
 
@@ -55,7 +77,7 @@ class GenreSongs extends Component {
       <div>
         {this.props.songs.listSongs.map((song) => {
           return (
-            <div className="user-song-item" key={song.id}>
+            <div className="user-song-item" key={song._id}>
               <button
                 className="play-button"
                 onClick={() => this.playSong(song)}
@@ -86,7 +108,7 @@ class GenreSongs extends Component {
                   <Dropdown.Item>Add to Queue</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Header>Add to playlist:</Dropdown.Header>
-                    {this.renderSongOptions(song.id)}
+                    {this.renderSongOptions(song._id)}
                   </Dropdown.Menu>
 
                 </Dropdown>

@@ -1,47 +1,47 @@
 [
     {
         "id": 0,
-        "name": "Hip-Hop",
+        "name": "HIP-HOP",
         "image": "hip-hop.png"
     },
     {
         "id": 1,
-        "name": "Pop",
+        "name": "POP",
         "image": "pop.png"
     },
     {
         "id": 2,
-        "name": "Rock",
+        "name": "ROCK",
         "image": "rock.png"
     },
     {
         "id": 4,
-        "name": "Latin",
+        "name": "LATIN",
         "image": "latin.png"
     },
     {
         "id": 5,
-        "name": "Electronic",
+        "name": "ELECTRONIC",
         "image": "electronic.png"
     },
     {
         "id": 6,
-        "name": "Indie",
+        "name": "INDIE",
         "image": "indie.png"
     },
     {
         "id": 7,
-        "name": "Classical",
+        "name": "CLASSICAL",
         "image": "classical.png"
     },
     {
         "id": 8,
-        "name": "Metal",
+        "name": "METAL",
         "image": "metal.png"
     },
     {
         "id": 9,
-        "name": "Blues",
+        "name": "BLUES",
         "image": "blues.png"
     }
 ]
