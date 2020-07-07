@@ -37,7 +37,7 @@ const createSong = async (req, res) => {
 const createSongs = async (req, res) => {
 
     try {
-        const { album, albumId, artist, artistId, year, songList } = req.body;
+        const { album, albumId, artist, year, songList } = req.body;
         songList.forEach( async (songMeta) => {
             let title = songMeta.title;
             let number = songMeta.number;
@@ -53,7 +53,6 @@ const createSongs = async (req, res) => {
                     album,
                     albumId,
                     artist,
-                    artistId,
                     genre,
                     year,
                     urlStreaming,
@@ -92,6 +91,22 @@ const getSongByName = async (req, res) => {
     try {
         const { name } = req.body;
         const song = await Songs.find(name);
+        if (song == null){
+            res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+        }else{
+            res.send({ status: 'ok', data: song });
+        }
+
+    } catch (error) {
+        res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
+    }
+}
+
+
+const getSongsByAlbum = async (req, res) => {
+    try {
+        const { albumId } = req.body;
+        const song = await Songs.find({albumId: albumId});
         if (song == null){
             res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
         }else{
@@ -179,6 +194,8 @@ const createAlbum = async (req, res) => {
 
     } catch (ERROR) {
         if (ERROR.name == 'ValidationError') {
+            console.log(ERROR);
+
             res.status(400).send({ status: 'ERROR', message: 'Valores ingresados invalidos' });
         } else {
             console.log(ERROR);
@@ -205,6 +222,18 @@ const getAlbum = async (req, res) => {
 
 }
 
+const getAllAlbums = async (requ, res) => {
+
+    try{
+        const albums = await Album.find({});
+
+        res.send({status: 'ok', data: albums});
+    }catch(error){
+        res.status(404).send({ status: 'ERROR', message: 'Album no encontrado' });
+
+    }
+}
 
 
-module.exports = { createSong, createSongs, getSong, getSongByGenre, getSongByName, createArtist, getArtist, createAlbum, getAlbum };
+
+module.exports = { createSong, createSongs,getSongsByAlbum, getSong, getSongByGenre, getSongByName, createArtist, getArtist, createAlbum, getAlbum, getAllAlbums };

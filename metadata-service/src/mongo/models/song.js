@@ -8,7 +8,7 @@ const songSchema = new Schema({
     album : {type: String, required: true},
     albumId : {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'albums'},
     artist : {type: String, required: true},
-    artistId : {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'artists'},
+    artistId : {type: mongoose.Schema.Types.ObjectId, ref: 'artists'},
     genre : {type: String, required: true},
     year: {type:String, required: true},
     urlStreaming: {type: String, required: true},
