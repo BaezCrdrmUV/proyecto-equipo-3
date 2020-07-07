@@ -17,7 +17,7 @@ class TrackList extends Component {
 
   async componentDidMount() {
     this.props.getSelectedPlaylist(this.props.elementToRender.id);
-    const selectedPlaylist = this.props.playlists.selectedPlaylist;
+    
     const settings = {
       method: 'POST',
       headers: new Headers({
@@ -98,25 +98,28 @@ class TrackList extends Component {
   }
 
 
-  renderSongOptions(songID){
-    const playlists = this.props.playlists.playlists;
-    return (     
-        <div>
-            {
-                playlists.map(playlist => {
-                    return <Dropdown.Item key={playlist.id} onClick={() => console.log(songID, playlist.id)} >
-                        {playlist.name}
-                      </Dropdown.Item>   
-                })
-            }
-        </div>
-    )
-  }
+  // renderSongOptions(songID){
+  //   const playlists = this.props.playlists.playlists;
+  //   return (     
+  //       <div>
+  //           {
+  //               playlists.map(playlist => {
+  //                   return <Dropdown.Item key={playlist.id} onClick={() => console.log(songID, playlist.id)} >
+  //                       {playlist.name}
+  //                     </Dropdown.Item>   
+  //               })
+  //           }
+  //       </div>
+  //   )
+  // }
 
   renderSongs() {
+
+    const list = this.props.songs.listSongs
+
     return (
       <div>
-        {this.props.songs.listSongs.map((song) => {
+        {list.map((song) => {
           return (
             <div className="user-song-item" key={song._id}>
               <button
@@ -149,7 +152,7 @@ class TrackList extends Component {
                   <Dropdown.Item>Add to Queue</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Header>Add to playlist:</Dropdown.Header>
-                    {this.renderSongOptions(song.id)}
+                    {/* {this.renderSongOptions(song.id)} */}
                   </Dropdown.Menu>
 
                 </Dropdown>

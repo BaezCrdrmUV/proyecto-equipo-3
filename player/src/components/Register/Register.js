@@ -61,6 +61,18 @@ class Register extends Component {
                     this.setState({ registerSuccess: result.status });
                     break;
                 }
+
+                case "DUPLICATED_VALUES":{
+                    console.log("usuario existente");
+                    alert('existing user');
+                    break
+                }
+
+                case "ERROR":{
+                    console.log("Error in Db");
+                    alert ('error in database');
+                    break;
+                }
             }
         }
 

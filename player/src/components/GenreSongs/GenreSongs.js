@@ -52,6 +52,34 @@ class GenreSongs extends Component {
   }
 
 
+  async addSongToPlaylist(playlist, song){
+
+    
+    console.log("help");
+
+    const settings = {
+      method: 'PUT',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+
+      }),
+
+      body: JSON.stringify({
+        "listId": playlist,
+        "songs": song
+      })
+    }
+    try {
+      const response =  await fetch('http://localhost:80/playlist/AddSong', settings);
+      const json =  await response.json();
+      console.log(json);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   playSong(song) {
     this.props.currentSong(song);
   }
@@ -63,7 +91,7 @@ class GenreSongs extends Component {
         <div>
             {
                 playlists.map(playlist => {
-                    return <Dropdown.Item key={playlist.id} onClick={() => console.log(songID, playlist.id)} >
+                    return <Dropdown.Item key={playlist.id} onClick={() => this.addSongToPlaylist(playlist._id, songID)} >
                         {playlist.name}
                       </Dropdown.Item>   
                 })

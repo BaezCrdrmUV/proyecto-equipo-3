@@ -66,11 +66,13 @@ class Login extends Component {
         case "INVALID_PASSWORD": {
           console.log("contraseña mal");
           this.setState({ loginError: "Contraseña incorrecta" });
+          alert('wrong password');
           break;
         }
         case "USER_NOT_FOUND": {
           console.log("usuario no encontrado");
           this.setState({ loginError: "Usuario no encontrado" });
+          alert('user not found');
           break;
         }
       }
@@ -105,7 +107,6 @@ class Login extends Component {
               </Button>
           </Link>
         </Form>
-        {this.state.loginError && <h3>{this.state.loginError}</h3>}
         {this.state.loginSuccess && <Redirect to="/"></Redirect>}
 
       </div>

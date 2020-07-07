@@ -92,6 +92,8 @@ export class Upload extends Component {
         this.prepareSongs();
         await this.uploadMetadata();
         // await this.uploadImage();
+      }else{
+        alert('Upload server error');   
       }
     } catch (error) {
       console.log(error);
@@ -197,6 +199,8 @@ export class Upload extends Component {
     sumbitAlbum(e) {
     e.preventDefault(e);
     if(this.checkImageFile() && this.checkSongList()){
+      alert('uploading files. songs may take time to appear on the menu');
+
        this.uploadAlbum();
 
     }
@@ -207,7 +211,7 @@ export class Upload extends Component {
     if (this.checkSongInputs() && this.checkSongFile()) {
       const song = {
         "title": this.state.songTitle,
-        "genre": this.state.songGenre,
+        "genre": this.state.songGenre.toUpperCase(),
         "number": this.state.albumSongs.length + 1,
         "mp3": this.state.songMP3
       }
@@ -233,7 +237,7 @@ export class Upload extends Component {
 
   createAlbumPath(name){
     var name2 = name.substring(0,name.lastIndexOf("."))
-    var path = "localhost:8081/"+ name2+"/" + name2+".m3u8"
+    var path = "http://localhost:80/"+ name2+"/" + name2+".m3u8"
     console.log(path);
     return path;
   }
@@ -279,19 +283,18 @@ export class Upload extends Component {
   }
 
   checkSongFile(){
-
-    // if(!this.state.songMP3.match(/.(mp3)$/i)){
-    //   alert("not a mp3 file");
-    //   return false
-    // }
+    if(!this.state.songMP3.name.match(/.(mp3)$/i)){
+      alert("not a mp3 file");
+      return false
+    }
     return true;
   }
 
   checkImageFile(){
-    // if(!this.state.albumImage.match(/.(jpg)$/i)){
-    //   alert("not a image");
-    //   return false;
-    // }
+    if(!this.state.albumImage.name.match(/.(jpg)$/i)){
+      alert("not a jpg image");
+      return false;
+    }
     return true;
   }
 
