@@ -4,7 +4,7 @@ const songController = require('../controllers/song-controller.js');
 
 router.post('/songs/createSong', songController.createSong);
 router.post('/songs/createSongs', songController.createSongs);
-router.get('/songs/getSongId', songController.getSong);
+router.post('/songs/getSongId', songController.getSong);
 router.get('/songs/getSongByName', songController.getSongByName);
 router.get('/songs/getSongByGenre', songController.getSongByGenre);
 
@@ -14,5 +14,7 @@ router.get('/songs/getArtist', songController.getArtist);
 router.post('/songs/createAlbum', songController.createAlbum);
 router.get('/songs/getAlbum', songController.getAlbum);
 
+router.post('/songs/getSongsByAlbum', songController.getSongsByAlbum)
+router.get('/songs/getAllAlbums', songController.getAllAlbums);
 
 module.exports = router;
