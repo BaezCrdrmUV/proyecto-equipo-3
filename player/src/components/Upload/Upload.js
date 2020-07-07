@@ -93,7 +93,7 @@ export class Upload extends Component {
         this.setState({ albumID: json.album });
         this.prepareSongs();
         await this.uploadMetadata();
-        // await this.uploadImage();
+        await this.uploadImage();
       }else{
         alert('Upload server error');   
       }
@@ -230,7 +230,7 @@ export class Upload extends Component {
 
     songs.forEach(song => {
       song["urlStreaming"] = this.createAlbumPath(song.mp3.name);
-      song["urlImage"] = this.createImagePath(this.state.albumName);
+      song["urlImage"] = this.createImagePath(this.state.albumImage.name);
       song["albumID"] = this.state.albumID;
     });
 
@@ -238,16 +238,17 @@ export class Upload extends Component {
   }
 
   createAlbumPath(name){
-    var name2 = name.substring(0,name.lastIndexOf("."))
-    var path = "http://localhost:80/"+ name2+"/" + name2+".m3u8"
+    var name2 = name.substring(0,name.lastIndexOf("."));
+    var name3 = name2.replace(/\s/g, '');
+    var path = "http://localhost:80/"+ name3+"/" + name3+".m3u8"
     console.log(path);
     return path;
   }
 
   createImagePath(name){
     var name2 = name.substring(0,name.lastIndexOf("."))
-
-    var path = "http://localhost:80/"+ name2+"/"+ name2+".jpg";
+    var name3 = name2.replace(/\s/g, '');
+    var path = "http://localhost:80/"+ name3+"/"+ name3+".jpg";
     return path;
   }
 
