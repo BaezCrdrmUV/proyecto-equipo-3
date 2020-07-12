@@ -23,6 +23,8 @@ apiEndpoints:
       - '/songs/getAlbum'
       - '/songs/getAllAlbums'
       - '/songs/getSongsByAlbum'
+      - '/songs/getSongsByGenre'
+      - '/songs/getSongsByName'
       - '/songs/getAllSongs'
       - '/songs/getAllArtist'
       - '/songs/getAlbumsByArtist'
