@@ -223,8 +223,8 @@ const getAlbum = async (req, res) => {
 }
 const getAlbumByArtist = async (req, res) => {
     try {
-        const { artistId } = req.body;
-        const album = await Songs.find({ artistId: artistId});
+        const { artistName } = req.body;
+        const album = await Songs.find({ artist: artistName});
         if (album == null){
             res.status(404).send({ status: 'ERROR', message: 'No se encuentran albumes' });
         }else{
