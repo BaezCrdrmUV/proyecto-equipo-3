@@ -90,7 +90,7 @@ const getSong = async (req, res) => {
 const getSongByName = async (req, res) => {
     try {
         const { name } = req.body;
-        const song = await Songs.find(name);
+        const song = await Songs.find( {title: name});
         if (song == null){
             res.status(404).send({ status: 'ERROR', message: 'Cancion no encontrada' });
         }else{
