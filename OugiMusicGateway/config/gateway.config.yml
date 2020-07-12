@@ -23,6 +23,8 @@ apiEndpoints:
       - '/songs/getAlbum'
       - '/songs/getAllAlbums'
       - '/songs/getSongsByAlbum'
+      - '/songs/getAllSongs'
+      - '/songs/getAllArtist'
   users:
     paths:
       - '/login'
