@@ -221,6 +221,21 @@ const getAlbum = async (req, res) => {
     }
 
 }
+const getAlbumByArtist = async (req, res) => {
+    try {
+        const { artistId } = req.body;
+        const album = await Songs.find({ artistId: artistId});
+        if (album == null){
+            res.status(404).send({ status: 'ERROR', message: 'No se encuentran albumes' });
+        }else{
+            res.send({ status: 'ok', data: album });
+        }
+
+    } catch (error) {
+        res.status(404).send({ status: 'ERROR', message: 'Error al encontrar albumes' });
+    }
+
+}
 
 const getAllAlbums = async (requ, res) => {
 
@@ -260,4 +275,4 @@ const getAllArtists = async (req, res) =>{
 
 }
 
-module.exports = { createSong, createSongs,getSongsByAlbum, getSong, getSongByGenre, getSongByName, createArtist, getArtist, createAlbum, getAlbum, getAllAlbums, getAllSongs, getAllArtists };
+module.exports = { createSong, createSongs,getSongsByAlbum, getSong, getSongByGenre, getSongByName, createArtist, getArtist, createAlbum, getAlbum, getAllAlbums, getAllSongs, getAllArtists, getAlbumByArtist };

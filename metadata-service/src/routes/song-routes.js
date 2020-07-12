@@ -16,6 +16,7 @@ router.get('/songs/getAlbum', songController.getAlbum);
 
 router.post('/songs/getSongsByAlbum', songController.getSongsByAlbum)
 router.get('/songs/getAllAlbums', songController.getAllAlbums);
+router.post('/songs/getAlbumsByArtist', songController.getAlbumByArtist)
 
 router.get('/songs/getAllSongs', songController.getAllSongs);
 router.get('/songs/getAllArtists', songController.getAllArtists);
